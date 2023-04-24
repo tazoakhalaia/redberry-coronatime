@@ -1,18 +1,12 @@
 <?php
 
+use App\Http\Controllers\LandingController;
+use App\Http\Controllers\register\RegisterController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [LandingController::class, 'index'])->name('landing');
+
+Route::middleware('setLocale')->group(function(){
+    Route::get('/register', [RegisterController::class, 'index'])->name('register');
 });
