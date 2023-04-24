@@ -19,7 +19,12 @@
                 <h1 class="font-medium">Welcome to Coronatime</h1>
                 <p class="mt-2 text-gray-600">Please enter required info to sign up</p>
             </div>
-            <x-input placeholder="as" name="username" label="as" type="text" />
+            <div>
+            <x-input class="pl-3" placeholder="Enter unique username" name="username" label="Username" type="text" />
+            <x-input class="pl-3" placeholder="Enter your email" name="username" label="Email" type="email" />
+            <x-input class="pl-3" placeholder="Fill in password" name="username" label="Password" type="password" />
+            <x-input class="pl-3" placeholder="Repeat password" name="username" label="Repeat password" type="password" />
+            </div>
         </div>
     </div>
     <div class="min-h-screen w-2/5 float-right">
