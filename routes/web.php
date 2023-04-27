@@ -11,3 +11,7 @@ Route::group(['middleware' => 'setLocale', 'controller' => RegisterController::c
     Route::get('/register', 'index')->name('register');
     Route::post('/register', 'store')->name('register');
 });
+
+Route::get('/confirm-email', function(){
+    return view('confirm-email');
+})->name('confirm-email');
