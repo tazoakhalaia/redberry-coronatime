@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 
-Route::middleware('setLocale')->group(function(){
-    Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::group(['middleware' => 'setLocale', 'controller' => RegisterController::class], function(){
+    Route::get('/register', 'index')->name('register');
+    Route::post('/register', 'store')->name('register');
 });
