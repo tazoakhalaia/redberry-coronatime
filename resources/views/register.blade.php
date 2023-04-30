@@ -8,6 +8,18 @@
     <title>Register Page</title>
 </head>
 <body>
+@if($errors->any())
+    <div class="w-1/4">
+        <ul>
+            @foreach($errors->all() as $error)
+            <div class="p-4 mb-4 w-60 text-sm 
+        text-black-800 rounded-lg bg-red-50 
+        dark:bg-gray-800 
+        dark:text-black-400" role="alert">{{ $error}}</div>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div class=" w-3/5 float-left">
         <div class="w-4/5 m-auto h-screen">
         @if (session('success'))
@@ -49,7 +61,7 @@
         </div>
     </div>
     <div class="w-2/5 max-h-screen float-right">
-        <img class="w-full h-full" src="{{ asset('images/cover.png') }}">
+        <img class="w-full h-full " src="{{ asset('images/cover.png') }}">
     </div>
 </body>
 </html>

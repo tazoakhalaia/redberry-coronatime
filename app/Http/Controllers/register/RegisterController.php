@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\register;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUserRequest;
 use App\Mail\UserRegisteredEmail;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -16,15 +17,11 @@ class RegisterController extends Controller
         return view('register');
     }
 
-    public function store(Request $request) : RedirectResponse{
-        if ($request->input('password') !== $request->input('repeatpassword')) {
+    public function store(StoreUserRequest $user) : RedirectResponse{
+        if ($user->input('password') !== $user->input('repeatpassword')) {
             return redirect()->back()->with('error', 'The password and repeat password fields must match.');
         }
-        $user = new User();
-        $user->email = $request->input('email');
-        $user->password = bcrypt($request->input('password'));
-        $user->username = $request->input('username');
-        $user->save();
+        User::create($user->validated());
         Mail::to('tamazi.akhalaia@redberry.ge')->send(new UserRegisteredEmail($user));
         return redirect()->route('confirm-email')->with('success', 'User registered successfully.');
     }

@@ -13,10 +13,10 @@ class UserRegisteredEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
-    public function __construct($user)
+    public $verifyUser;
+    public function __construct($verifyUser)
     {
-        $this->user = $user;
+        $this->verifyUser = $verifyUser;
     }
 
     /**
@@ -25,7 +25,7 @@ class UserRegisteredEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'User Registered Email',
+            subject: 'VERIFY YOUR EMAIL',
         );
     }
 
