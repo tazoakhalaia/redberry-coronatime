@@ -20,7 +20,8 @@
         </ul>
     </div>
 @endif
-    <div class=" w-3/5 float-left">
+<div class="w-full flex">
+    <div class=" w-3/5 ">
         <div class="w-4/5 m-auto h-screen">
         @if (session('success'))
         <div class="p-4 mb-4 w-60 text-sm 
@@ -60,8 +61,9 @@
             </div>
         </div>
     </div>
-    <div class="w-2/5 max-h-screen float-right">
+    <div class="w-1/2 min-h-screen sm:hidden">
         <img class="w-full h-full " src="{{ asset('images/cover.png') }}">
     </div>
+</div>
 </body>
 </html>
