@@ -11,7 +11,7 @@
     <div class="h-screen w-1/2 relative">
         <img class="mt-10 m-auto" src="{{ asset('images/coronatime.png') }}">
         <div class="w-full text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <img class="m-auto mb-2" src="{{ asset('images/checked.png') }}">
+            <img class="m-auto mb-2" src="{{ asset('images/checkmark.gif') }}">
             <h1>We have sent you a confirmation email</h1>
         </div>
     </div>

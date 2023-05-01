@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\LandingController;
-use App\Http\Controllers\register\RegisterController;
+use App\Http\Controllers\Register\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 
