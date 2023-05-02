@@ -7,7 +7,6 @@ use App\Http\Requests\StoreUserRequest;
 use App\Mail\UserRegisteredEmail;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
@@ -22,7 +21,7 @@ class RegisterController extends Controller
             return redirect()->back()->with('error', 'The password and repeat password fields must match.');
         }
         User::create($user->validated());
-        Mail::to('tamazi.akhalaia@redberry.ge')->send(new UserRegisteredEmail($user));
+        Mail::to($user->email)->send(new UserRegisteredEmail($user));
         return redirect()->route('confirm-email')->with('success', 'User registered successfully.');
     }
 }
