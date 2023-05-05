@@ -13,9 +13,10 @@ class UserRegisteredEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public function __construct(public $verifyUser)
+    public function __construct(public $verifyUser, public $token)
     {
         $this->verifyUser = $verifyUser;
+        $this->token = $token;
     }
 
     /**

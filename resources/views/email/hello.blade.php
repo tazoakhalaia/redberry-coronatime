@@ -11,8 +11,12 @@
     <img class="m-auto" src="{{ asset('images/mailimg.png') }}">
     <h1 class="text-center font-bold">Confirmation email</h1>
     <p class="text-center">click this button to verify your email</p>
-    <div class="text-center">
-        <x-button class="text-white mt-10" buttonName="VERIFY EMAIL"/>
-    </div>
+     <div class="text-center mt-7">
+    <a href="{{ route('verify', $token) }}" class="text-white font-bold uppercase bg-btngreen pt-2 pl-10 pr-10 pb-2 rounded-sm">VERIFY EMAIL</a>
+</div>   
+
+    
+    
+
 </body>
 </html>
