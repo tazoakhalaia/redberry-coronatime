@@ -9,12 +9,10 @@ use Illuminate\View\View;
 class VerificationController extends Controller
 {
 
-        public function verify($token) : RedirectResponse{
-            $user = User::where('token', $token)->first();
+        public function verify(User $user) : RedirectResponse{
             $user->verify = true;
             $user->save();
             return redirect()->route('confirm', ['token' => $user->token]);
-           
         }
         
 }

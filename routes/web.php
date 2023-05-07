@@ -16,7 +16,7 @@ Route::group(['middleware' => 'setLocale', 'controller' => RegisterController::c
 Route::view('/send-email', 'confirm-email')->name('send-email');
 Route::view('/account-confirm/{token}', 'account_confirm_page.account-confirm')->name('confirm');
 
-Route::get('/hello/{token}', [VerificationController::class, 'verify'])->name('verify');
+Route::get('/verify/{user:token}', [VerificationController::class, 'verify'])->name('verify');
 
 
 
