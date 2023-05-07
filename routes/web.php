@@ -13,13 +13,8 @@ Route::group(['middleware' => 'setLocale', 'controller' => RegisterController::c
     Route::post('/register', 'register')->name('register');
 });
 
-Route::get('/send-email', function(){
-    return view('confirm-email');
-})->name('send-email');
-
-Route::get('/account-confirm/{token}', function(){
-    return view('account_confirm_page.account-confirm');
-})->name('confirm');
+Route::view('/send-email', 'confirm-email')->name('send-email');
+Route::view('/account-confirm/{token}', 'account_confirm_page.account-confirm')->name('confirm');
 
 Route::get('/hello/{token}', [VerificationController::class, 'verify'])->name('verify');
 
