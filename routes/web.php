@@ -6,7 +6,7 @@ use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [LandingController::class, 'index'])->name('landing');
+Route::get('/', [LandingController::class, 'index'])->name('login')->middleware('setLocale');
 
 Route::group(['middleware' => 'setLocale', 'controller' => RegisterController::class], function(){
     Route::get('/register', 'index')->name('register');

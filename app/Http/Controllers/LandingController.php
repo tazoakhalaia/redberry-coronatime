@@ -8,6 +8,6 @@ use Illuminate\View\View;
 class LandingController extends Controller
 {
     public function index() : View {
-        return view('landing');
+        return view('login');
     }
 }
