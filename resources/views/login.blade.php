@@ -17,8 +17,8 @@
         </div>
         <img class="mt-10" src="{{ asset('images/coronatime.png') }}">
             <div class="mt-8">
-                <h1 class="font-medium">Welcome back</h1>
-                <p class="mt-2 text-gray-600">Welcome back! Please enter your details</p>
+                <h1 class="font-medium">{{ trans('language.welcome_back') }}</h1>
+                <p class="mt-2 text-gray-600">{{ trans('language.enter_details') }}</p>
             </div>
             <form action="" method="POST">
                 @csrf
@@ -28,8 +28,8 @@
             </form>
             <div class="w-80 mt-5">
                 <div class="flex w-80 m-auto">
-                <p>Don’t have and account?</p>
-                <a href="/"><button class="ml-2 font-bold">Sign up for free</button></a>
+                <p>{{ trans('language.dont_have_acc') }}</p>
+                <a href="{{ route('register') }}"><button class="ml-2 font-bold">{{ trans('language.signup_free') }}</button></a>
                 </div>
             </div>
         </div>
