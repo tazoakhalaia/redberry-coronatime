@@ -8,7 +8,7 @@ use App\Http\Controllers\SessionController;
 
 Route::get('/', [SessionController::class, 'index'])->name('loginpage')->middleware('setLocale');
 Route::post('/login', [SessionController::class, 'login'])->name('login');
-Route::view('/dashboard', 'dashboard')->name('dashboard');
+Route::view('/dashboard', 'dashboard')->name('dashboard')->middleware('admin');
 
 Route::group(['middleware' => 'setLocale', 'controller' => RegisterController::class], function(){
     Route::get('/register', 'index')->name('register');
