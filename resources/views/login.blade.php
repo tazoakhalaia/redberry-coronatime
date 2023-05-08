@@ -20,11 +20,21 @@
                 <h1 class="font-medium">{{ trans('language.welcome_back') }}</h1>
                 <p class="mt-2 text-gray-600">{{ trans('language.enter_details') }}</p>
             </div>
-            <form action="" method="POST">
+            @if(session('error'))
+            <div class="flex p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 w-80 mt-2" role="alert">
+                <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                <span class="sr-only">Info</span>
+                <h1 class="font-bold">{{ session('error') }}</h1>
+            </div>
+            @endif
+            <form action="{{ route('login') }}" method="POST">
                 @csrf
-            <x-input class="pl-3" placeholder="Enter unique username or email" name="username" label="{{ trans('language.username') }}" type="text" />
+            <x-input class="pl-3" placeholder="Enter unique username or email" name="username_or_email" label="{{ trans('language.username') }}" type="text" />
             <x-input class="pl-3" placeholder="Fill in password" name="password" label="{{ trans('language.password') }}" type="password" />
-            <x-button class="text-white mt-10" buttonName="{{ trans('language.signup') }}"/>
+            <div class="mt-4 w-80 flex justify-end">
+                <a href="#" class="text-blue-600 font-bold">{{ trans('language.forgot_password') }}</a>
+            </div>
+            <x-button class="text-white mt-6" buttonName="{{ trans('language.signup') }}"/>
             </form>
             <div class="w-80 mt-5">
                 <div class="flex w-80 m-auto">

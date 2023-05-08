@@ -12,7 +12,8 @@ return [
     'unique' => 'Username should be unique, min 3 symbols',
     'welcome_back' => 'Welcome Back',
     'enter_details' => 'Welcome back! Please enter your details',
-    'dont_have_acc' => 'Don’t have and account?',
+    'dont_have_acc' => 'Don’t have an account?',
     'signup_free' => 'Sign up for free',
+    'forgot_password' => 'Forgot Password?'
 ]
 ?>
