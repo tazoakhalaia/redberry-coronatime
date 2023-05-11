@@ -12,8 +12,8 @@
     <div class=" w-3/5 ">
         <div class="w-4/5 m-auto h-screen">
         <div class="flex mt-10">
-    <a href="{{ route('login', ['lang' => 'ka']) }}"><img class="w-8 h-5" src="{{ asset('images/georgia.jpg') }}"></a>
-    <a href="{{ route('login', ['lang' => 'en']) }}"><img class="w-8 h-5 ml-2" src="{{ asset('images/english.png') }}"></a>
+    <a href="{{ route('loginpage', ['lang' => 'ka']) }}"><img class="w-8 h-5" src="{{ asset('images/georgia.jpg') }}"></a>
+    <a href="{{ route('loginpage', ['lang' => 'en']) }}"><img class="w-8 h-5 ml-2" src="{{ asset('images/english.png') }}"></a>
         </div>
         <img class="mt-10" src="{{ asset('images/coronatime.png') }}">
             <div class="mt-8">

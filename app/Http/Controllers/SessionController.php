@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class SessionController extends Controller
@@ -11,7 +12,7 @@ class SessionController extends Controller
         return view('login');
     }
 
-    public function login(LoginRequest $request)
+    public function login(LoginRequest $request) : RedirectResponse
 {
     $input = $request->only('username_or_email', 'password');
     $fieldType = filter_var($request->username_or_email, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';

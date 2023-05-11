@@ -5,9 +5,10 @@ use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionController;
 
-
-Route::get('/', [SessionController::class, 'index'])->name('loginpage')->middleware('setLocale');
-Route::post('/login', [SessionController::class, 'login'])->name('login');
+Route::group(['middleware' => 'setLocale', 'controller' => SessionController::class], function(){
+    Route::get('/', 'index')->name('loginpage');
+    Route::post('/login', 'login')->name('login');
+});
 Route::view('/dashboard', 'dashboard')->name('dashboard')->middleware('admin');
 
 Route::group(['middleware' => 'setLocale', 'controller' => RegisterController::class], function(){
