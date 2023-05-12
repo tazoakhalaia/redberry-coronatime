@@ -11,7 +11,9 @@ Route::group(['middleware' => 'setLocale', 'controller' => SessionController::cl
     Route::post('/login', 'login')->name('login');
 });
 Route::group(['middleware' => 'admin', 'controller' => DashboardController::class], function () {
-    Route::get('/dashboard', 'index')->name('dashboard');
+    Route::middleware('setLocale')->group(function(){
+        Route::get('/dashboard', 'index')->name('dashboard');
+    });
     Route::post('/logout', 'logout')->name('logout');
 });
 

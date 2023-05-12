@@ -8,6 +8,8 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="{{ route('dashboard', ['lang' => 'ka']) }}"><button>ka</button></a>
+    <a href="{{ route('dashboard', ['lang' => 'em']) }}"><button>en</button></a>
     <header class="w-full h-20">
         <div class="m-auto w-10/12 h-full flex justify-between items-center">
             <div>
@@ -62,9 +64,11 @@
         <input class="border-2 rounded-md h-full w-full pl-10 border-gray-200 outline-none" type="text" placeholder="Search By Country">
         <img class="absolute top-1/2 transform -translate-y-1/2 ml-4" src="{{ asset('images/search.svg') }}">
         </div>
+        <div class="statistic">
         @foreach ($countries as $country)
-        <h1>{{ $country['name']['en'] }}<h1>
+        <h1>{{ $country['name'][app()->getLocale()] }}<h1>
         @endforeach
+        <div>
     </div>
     </main>
 
@@ -83,7 +87,7 @@
 
         countrybtn.addEventListener('click', ()=> {
             worldWide.style.display = "none";
-            country.style.display = "flex";
+            country.style.display = "block";
             countrybtn.style.fontWeight = "500"
             worldWideBtn.style.fontWeight = "300"
         });
