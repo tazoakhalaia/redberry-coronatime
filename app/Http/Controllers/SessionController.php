@@ -17,7 +17,7 @@ class SessionController extends Controller
     {
         $input = $request->only('username_or_email', 'password');
         $fieldType = filter_var($request->username_or_email, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        if (auth()->attempt(array($fieldType => $input['username_or_email'], 'password' => $input['password']))) {
+        if (auth()->attempt(array($fieldType => $input['username_or_email'], 'password' => $input['password']), true)) {
             if (!auth()->user()->verify) {
                 auth()->logout();
                 return redirect()->route('loginpage')->with('error', 'Please verify your account.');
