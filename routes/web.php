@@ -15,7 +15,6 @@ Route::group(['middleware' => 'admin', 'controller' => DashboardController::clas
         Route::get('/dashboard', 'index')->name('dashboard');
     });
     Route::post('/logout', 'logout')->name('logout');
-    Route::get('/dashboard/search', 'search')->name('dashboard.search');
 });
 
 Route::group(['middleware' => 'setLocale', 'controller' => RegisterController::class], function () {

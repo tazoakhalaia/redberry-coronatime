@@ -15,7 +15,6 @@
             </div>
             <div class="userbox flex">
                 <form method="GET" action="{{ route('dashboard') }}">
-                    @csrf
                     <select class="mr-10 bg-transparent outline-none" name="lang" onchange="this.form.submit()">
                     <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English</option>
                     <option value="ka" {{ app()->getLocale() == 'ka' ? 'selected' : '' }}>Georgian</option>
@@ -62,7 +61,7 @@
     </div>
     <div class="country w-full mt-10">
         <form class="h-10 w-64 relative">
-            <input class="border-2 rounded-md h-full w-full pl-10 border-gray-200 outline-none" name="query" type="text" placeholder="Search By Country">
+            <input class="search-input border-2 rounded-md h-full w-full pl-10 border-gray-200 outline-none" name="query" type="text" placeholder="Search By Country">
             <img class="absolute top-1/2 transform -translate-y-1/2 ml-4" src="{{ asset('images/search.svg') }}">
         </form>
         <div class="h-countryBox overflow-y-auto mt-10">
@@ -92,6 +91,22 @@
             country.style.display = "block";
             countrybtn.style.fontWeight = "500"
             worldWideBtn.style.fontWeight = "300"
+        });
+
+        //Search
+        const searchInput = document.querySelector('.search-input');
+        const countryNames = Array.from(document.querySelectorAll('.h-countryBox h1')).map(h1 => h1.textContent.trim().toLowerCase());
+        searchInput.addEventListener('input', function() {
+            const query = this.value.trim().toLowerCase();
+            const filteredCountryNames = countryNames.filter(name => name.includes(query));
+            const countryElements = Array.from(document.querySelectorAll('.h-countryBox h1'));
+            countryElements.forEach(element => {
+                if (filteredCountryNames.includes(element.textContent.trim().toLowerCase())) {
+                    element.style.display = '';
+                } else {
+                    element.style.display = 'none';
+                }
+            });
         });
     </script>
 </body>
