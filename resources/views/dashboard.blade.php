@@ -34,13 +34,31 @@
     <button class="worldwidebtn">Worldwide</button>
     <button class="countrybtn ml-10">By country</button>
     </div>
-    <div class="worldwide w-full mt-10">
-        <div class="newcases w-96 h-60 bg-blue-300 rounded-md">
-            sad
+    <div class="worldwide w-full mt-10 flex flex-wrap justify-between">
+        <div class="newcases w-96 h-60 bg-blue-100 rounded-md flex justify-center mt-6">
+            <div>
+                <img class="mt-10" src="{{ asset('images/statisticline.svg') }}">
+                <h1 class="text-center mt-6">New Cases</h1>
+                <h1 class="font-bold text-center mt-6 text-worldwideBlue text-3xl">715,222</h1>
+            </div>
+        </div>
+        <div class="recovered w-96 h-60 bg-green-100 rounded-md flex justify-center mt-6">
+            <div>
+                <img class="mt-10" src="{{ asset('images/statisticgreen.svg') }}">
+                <h1 class="text-center mt-6">Recovered</h1>
+                <h1 class="font-bold text-center mt-6 text-worldwideBlue text-3xl">71,222</h1>
+            </div>
+        </div>
+        <div class="death w-96 h-60 bg-yellow-100 rounded-md flex justify-center mt-6">
+            <div>
+                <img class="mt-10" src="{{ asset('images/statisticyellow.svg') }}">
+                <h1 class="text-center mt-6">Death</h1>
+                <h1 class="font-bold text-center mt-6 text-worldwideBlue text-3xl">711</h1>
+            </div>
         </div>
     </div>
     <div class="country hidden w-full bg-blue-500 mt-10">
-        asdsad
+        asdsad213
     </div>
     </main>
 

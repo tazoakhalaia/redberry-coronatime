@@ -11,7 +11,8 @@ module.exports = {
         'sm': {'max': '375px'}
       },
       colors: {
-        btngreen: '#0FBA68'
+        btngreen: '#0FBA68',
+        worldwideBlue: '#2029F3'
       }
     },
   },
