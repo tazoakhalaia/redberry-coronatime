@@ -8,12 +8,28 @@
     <title>Document</title>
 </head>
 <body>
+    <header class="w-full bg-red-600 h-20">
+        <div class="bg-blue-500 m-auto w-10/12 h-full">
+            <div>
+                <img src="{{ asset('images/coronatime.svg') }}">
+            </div>
+            <div>
+                <select>
+                    <option value="english">English</option>
+                    <option value="georgian">Georgian</option>
+                </select>
+                <div>
+                    <h1>username</h1>
+                </div>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button class="bg-blue-600">logout</button>
+                </form>
+            </div>
+        </div>
+    </header>
     <button class="worldwidebtn">worldwide</button>
     <button class="countrybtn">country</button>
-    <form action="{{ route('logout') }}" method="post">
-        @csrf
-        <button class="bg-blue-600">logout</button>
-    </form>
     <div class="worldwide w-full bg-red-500 mt-10">
         asdsad
     </div>
@@ -21,7 +37,7 @@
         asdsad
     </div>
 
-    
+
     <!---->
     <script>
         let worldWideBtn = document.querySelector('.worldwidebtn');
