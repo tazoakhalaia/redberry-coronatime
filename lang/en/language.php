@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 return [
     'welcome' => 'Welcome to Coronatime',
     'alert' => 'Please enter required info to sign up',
@@ -15,5 +16,4 @@ return [
     'dont_have_acc' => 'Don’t have an account?',
     'signup_free' => 'Sign up for free',
     'forgot_password' => 'Forgot Password?'
-]
-?>
+];

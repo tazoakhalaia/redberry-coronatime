@@ -14,17 +14,19 @@ use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
-    public function index() : View{
+    public function index(): View
+    {
         return view('register');
     }
 
-    public function register(RegisterRequest $request) : RedirectResponse{
+    public function register(RegisterRequest $request): RedirectResponse
+    {
         if ($request->password !== $request->input('repeatpassword')) {
             return redirect()->back()->with('error', 'The password and repeat password fields must match.');
         }
         $userToken = Str::random(40);
         $user = User::create([
-            ...$request->validated(), 
+            ...$request->validated(),
             'password' => Hash::make($request->password),
             'token' => $userToken
         ]);

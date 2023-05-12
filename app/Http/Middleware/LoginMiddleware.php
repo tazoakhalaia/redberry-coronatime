@@ -16,7 +16,7 @@ class LoginMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check()){
+        if(Auth::check()) {
             return $next($request);
         }
         return redirect()->route('loginpage')->with('error', 'Please log in to access this page.');
