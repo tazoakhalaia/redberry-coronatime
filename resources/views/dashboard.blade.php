@@ -65,9 +65,11 @@
             <input class="border-2 rounded-md h-full w-full pl-10 border-gray-200 outline-none" name="query" type="text" placeholder="Search By Country">
             <img class="absolute top-1/2 transform -translate-y-1/2 ml-4" src="{{ asset('images/search.svg') }}">
         </form>
+        <div class="h-countryBox overflow-y-auto mt-10">
         @foreach ($countries as $country)
-        <h1>{{ json_decode($country->name, true)[app()->getLocale()]}}</h1>
+        <h1 class="mt-4">{{ json_decode($country->name, true)[app()->getLocale()]}}</h1>
         @endforeach
+        </div>
        
     </div>
     </main>

@@ -13,6 +13,9 @@ module.exports = {
       colors: {
         btngreen: '#0FBA68',
         worldwideBlue: '#2029F3'
+      },
+      height: {
+        countryBox: '650px'
       }
     },
   },
