@@ -61,15 +61,14 @@
         </div>
     </div>
     <div class="country w-full mt-10">
-        <div class="h-10 w-64 relative">
-            <input class="border-2 rounded-md h-full w-full pl-10 border-gray-200 outline-none" type="text" placeholder="Search By Country">
+        <form class="h-10 w-64 relative">
+            <input class="border-2 rounded-md h-full w-full pl-10 border-gray-200 outline-none" name="query" type="text" placeholder="Search By Country">
             <img class="absolute top-1/2 transform -translate-y-1/2 ml-4" src="{{ asset('images/search.svg') }}">
-        </div>
-        <div class="mt-10">
+        </form>
         @foreach ($countries as $country)
-        <h1>{{ $country['name'][app()->getLocale()] }}<h1>
+        <h1>{{ json_decode($country->name, true)[app()->getLocale()]}}</h1>
         @endforeach
-        <div>
+       
     </div>
     </main>
 
