@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
@@ -9,7 +10,10 @@ Route::group(['middleware' => 'setLocale', 'controller' => SessionController::cl
     Route::get('/', 'index')->name('loginpage');
     Route::post('/login', 'login')->name('login');
 });
-Route::view('/dashboard', 'dashboard')->name('dashboard')->middleware('admin');
+Route::group(['middleware' => 'admin', 'controller' => DashboardController::class], function(){
+    Route::get('/dashboard', 'index')->name('dashboard');
+    Route::post('/logout', 'logout')->name('logout');
+});
 
 Route::group(['middleware' => 'setLocale', 'controller' => RegisterController::class], function(){
     Route::get('/register', 'index')->name('register');
