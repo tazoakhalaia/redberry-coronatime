@@ -62,7 +62,9 @@
         <input class="border-2 rounded-md h-full w-full pl-10 border-gray-200 outline-none" type="text" placeholder="Search By Country">
         <img class="absolute top-1/2 transform -translate-y-1/2 ml-4" src="{{ asset('images/search.svg') }}">
         </div>
-        <!--  -->
+        @foreach ($countries as $country)
+        <h1>{{ $country['name']['en'] }}<h1>
+        @endforeach
     </div>
     </main>
 

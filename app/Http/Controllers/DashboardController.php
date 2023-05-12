@@ -12,7 +12,7 @@ class DashboardController extends Controller
     {
         $response = Http::get('https://devtest.ge/countries');
         $data = $response->json();
-        return view('dashboard', ['country' => $data]);
+        return view('dashboard', ['countries' => $data]);
     }
 
 
