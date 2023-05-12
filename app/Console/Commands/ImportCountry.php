@@ -31,7 +31,6 @@ class ImportCountry extends Command
         $response = Http::get('https://devtest.ge/countries');
         $countires = $response->json();
         foreach ($countires as $country) {
-            // dd(json_encode($country['name']['en']));
             $c = new Countires();
             $c->name = json_encode([
                 'en' => $country['name']['en'],
@@ -41,6 +40,6 @@ class ImportCountry extends Command
         }
 
         $this->info('Countries imported successfully!');
-    
+
     }
 }

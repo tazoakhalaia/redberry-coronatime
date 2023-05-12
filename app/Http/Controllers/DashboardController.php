@@ -12,14 +12,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $user = auth()->user();
-        // $response = Http::get('https://devtest.ge/countries');
-        // $data = $response->json();
-        return view('dashboard', ['countries' => Countires::all() , 'user' => $user]);
-    }
-
-    public function search(Request $request){
-       
+        return view('dashboard', ['countries' => Countires::all() , 'user' => auth()->user()]);
     }
 
 
