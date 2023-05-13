@@ -15,11 +15,4 @@ class DashboardController extends Controller
     {
         return view('dashboard', ['countries' => Countires::all() , 'user' => auth()->user()]);
     }
-
-
-    public function logout()
-    {
-        Auth::logout();
-        return redirect()->route('loginpage');
-    }
 }

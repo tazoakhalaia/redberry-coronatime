@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class SessionController extends Controller
@@ -26,5 +27,11 @@ class SessionController extends Controller
         }
         return redirect()->route('loginpage')
             ->with('error', 'Invalid username or password.');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('loginpage');
     }
 }
