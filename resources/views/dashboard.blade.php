@@ -64,9 +64,34 @@
             <input class="search-input border-2 rounded-md h-full w-full pl-10 border-gray-200 outline-none" name="query" type="text" placeholder="Search By Country">
             <img class="absolute top-1/2 transform -translate-y-1/2 ml-4" src="{{ asset('images/search.svg') }}">
         </form>
-        <div class="h-countryBox overflow-y-auto mt-10">
+        <div class="statisticbar flex justify-between mt-6 bg-gray-100 p-2 rounded-md">
+            <div>
+                <h1>Location</h1>
+            </div>
+            <div>
+                <h1>New Cases</h1>
+            </div>
+            <div>
+                <h1>Death</h1>
+            </div>
+            <div  class="pr-4">
+                <h1>Recovered</h1>
+            </div>
+        </div>
+        <div class="h-countryBox overflow-y-auto mt-10 pr-4">
+            <div class="flex justify-between">
+            <h1>Worldwide</h1>
+            <h1>9,000,000</h1>
+            <h1>60,000</h1>
+            <h1>5,000,00</h1>
+            </div>
         @foreach ($countries as $country)
+        <div class="flex items-center justify-between">
         <h1 class="mt-4">{{ json_decode($country->name, true)[app()->getLocale()]}}</h1>
+        <h1>{{ $country->confirmed }}</h1>
+        <h1>{{ $country->recovered }}</h1>
+        <h1>{{ $country->deaths }}</h1>
+        </div>
         @endforeach
         </div>
        

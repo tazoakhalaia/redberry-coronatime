@@ -13,6 +13,10 @@ return new class () extends Migration {
         Schema::create('countires', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('confirmed');
+            $table->string('recovered');
+            $table->string('critical');
+            $table->string('deaths');
             $table->timestamps();
         });
     }
