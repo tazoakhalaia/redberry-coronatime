@@ -109,6 +109,7 @@
         <h2 class="w-1/4">{{ $country->recovered }}</h2>
         <h2 class="w-1/4">{{ $country->deaths }}</h2>
         </div>
+        <hr class="mt-2 mb-2">
         @endforeach
         </div>
        
@@ -142,11 +143,14 @@
             const query = this.value.trim().toLowerCase();
             const filteredCountryNames = countryNames.filter(name => name.includes(query));
             const countryElements = Array.from(document.querySelectorAll('.h-countryBox h1'));
-            countryElements.forEach(element => {
+            const hrElements = Array.from(document.querySelectorAll('.h-countryBox hr'));
+            countryElements.forEach((element, i) => {
                 if (filteredCountryNames.includes(element.textContent.trim().toLowerCase())) {
                     element.parentElement.style.display = '';
+                    hrElements[i].style.display = '';
                 } else {
                     element.parentElement.style.display = 'none';
+                    hrElements[i].style.display = 'none';
                 }
             });
         });
