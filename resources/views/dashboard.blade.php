@@ -65,32 +65,49 @@
             <img class="absolute top-1/2 transform -translate-y-1/2 ml-4" src="{{ asset('images/search.svg') }}">
         </form>
         <div class="statisticbar flex justify-between mt-6 bg-gray-100 p-2 rounded-md">
-            <div>
-                <h1>Location</h1>
+            <div class="flex items-center w-1/4">
+                <h1 class="font-bold">Location</h1>
+                <div class="ml-2">
+                <img class="w-2 h-2" src="{{ asset('images/arrowup.png') }}">
+                <img class="w-2 h-2" src="{{ asset('images/arrowdown.png') }}">
+                </div>
             </div>
-            <div>
-                <h1>New Cases</h1>
+            <div class="flex items-center w-1/4">
+                <h1 class="font-bold">New Cases</h1>
+                <div class="ml-2">
+                <img class="w-2 h-2" src="{{ asset('images/arrowup.png') }}">
+                <img class="w-2 h-2" src="{{ asset('images/arrowdown.png') }}">
+                </div>
             </div>
-            <div>
-                <h1>Death</h1>
+            <div class="flex items-center w-1/4">
+                <h1 class="font-bold">Death</h1>
+                <div class="ml-2">
+                <img class="w-2 h-2" src="{{ asset('images/arrowup.png') }}">
+                <img class="w-2 h-2" src="{{ asset('images/arrowdown.png') }}">
+                </div>
             </div>
-            <div  class="pr-4">
-                <h1>Recovered</h1>
+            <div  class="pr-4 flex items-center w-1/4">
+                <h1 class="font-bold">Recovered</h1>
+                <div class="ml-2">
+                <img class="w-2 h-2" src="{{ asset('images/arrowup.png') }}">
+                <img class="w-2 h-2" src="{{ asset('images/arrowdown.png') }}">
+                </div>
             </div>
         </div>
         <div class="h-countryBox overflow-y-auto mt-10 pr-4">
-            <div class="flex justify-between">
-            <h1>Worldwide</h1>
-            <h1>9,000,000</h1>
-            <h1>60,000</h1>
-            <h1>5,000,00</h1>
+            <div class="flex justify-between items-center">
+            <h1 class="w-1/4">Worldwide</h1>
+            <h2 class="w-1/4">9,000,000</h2>
+            <h2 class="w-1/4">60,000</h2>
+            <h2 class="w-1/4">5,000,00</h2>
             </div>
+            <hr class="mt-2">
         @foreach ($countries as $country)
-        <div class="flex items-center justify-between">
-        <h1 class="mt-4">{{ json_decode($country->name, true)[app()->getLocale()]}}</h1>
-        <h1>{{ $country->confirmed }}</h1>
-        <h1>{{ $country->recovered }}</h1>
-        <h1>{{ $country->deaths }}</h1>
+        <div class="flex items-center justify-between mt-6">
+        <h1 class="mt-4 w-1/4">{{ json_decode($country->name, true)[app()->getLocale()]}}</h1>
+        <h2 class="w-1/4">{{ $country->confirmed }}</h2>
+        <h2 class="w-1/4">{{ $country->recovered }}</h2>
+        <h2 class="w-1/4">{{ $country->deaths }}</h2>
         </div>
         @endforeach
         </div>
@@ -127,12 +144,13 @@
             const countryElements = Array.from(document.querySelectorAll('.h-countryBox h1'));
             countryElements.forEach(element => {
                 if (filteredCountryNames.includes(element.textContent.trim().toLowerCase())) {
-                    element.style.display = '';
+                    element.parentElement.style.display = '';
                 } else {
-                    element.style.display = 'none';
+                    element.parentElement.style.display = 'none';
                 }
             });
         });
+
     </script>
 </body>
 </html>
