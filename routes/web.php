@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionController;
 
 Route::group(['middleware' => 'setLocale', 'controller' => SessionController::class], function(){
-    Route::get('/', 'index')->name('loginpage');
+    Route::get('/', 'index')->name('signup');
     Route::post('/login', 'login')->name('login');
 });
 Route::view('/dashboard', 'dashboard')->name('dashboard')->middleware('admin');
