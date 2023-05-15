@@ -19,6 +19,6 @@ class LoginMiddleware
         if(Auth::check()) {
             return $next($request);
         }
-        return redirect()->route('loginpage')->with('error', 'Please log in to access this page.');
+        return redirect()->route('signup')->with('error', 'Please log in to access this page.');
     }
 }

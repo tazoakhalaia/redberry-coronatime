@@ -13,7 +13,7 @@
         <div class="w-full text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <img class="m-auto mb-2" src="{{ asset('images/checkmark.gif') }}">
             <h1>Your account is confirmed, you can sign in</h1>
-            <a href="{{ route('loginpage') }}"><x-button class="text-white mt-10" buttonName="SIGN IN"/></a>
+            <a href="{{ route('signup') }}"><x-button class="text-white mt-10" buttonName="SIGN IN"/></a>
         </div>
     </div>
 </body>

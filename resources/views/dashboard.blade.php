@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    <title>Document</title>
+    <title>Dashboard</title>
 </head>
 <body>
     <header class="w-full h-20">
@@ -59,7 +59,7 @@
             </div>
         </div>
     </div>
-    <div class="country w-full mt-10">
+    <div class="country  w-full mt-10">
         <form class="h-10 w-64 relative">
             <input class="search-input border-2 rounded-md h-full w-full pl-10 border-gray-200 outline-none" name="query" type="text" placeholder="Search By Country">
             <img class="absolute top-1/2 transform -translate-y-1/2 ml-4" src="{{ asset('images/search.svg') }}">
@@ -68,29 +68,29 @@
             <div class="flex items-center w-1/4">
                 <h1 class="font-bold">Location</h1>
                 <div class="ml-2">
-                <img class="w-2 h-2" src="{{ asset('images/arrowup.png') }}">
-                <img class="w-2 h-2" src="{{ asset('images/arrowdown.png') }}">
+                <a href="{{ route('dashboard', ['sort' => 'location']) }}"><img class="w-2 h-2" src="{{ asset('images/arrowup.png') }}"></a>
+                <a href="{{ route('dashboard', ['sort' => 'location']) }}"><img class="w-2 h-2" src="{{ asset('images/arrowdown.png') }}"></a>
                 </div>
             </div>
             <div class="flex items-center w-1/4">
                 <h1 class="font-bold">New Cases</h1>
                 <div class="ml-2">
-                <img class="w-2 h-2" src="{{ asset('images/arrowup.png') }}">
-                <img class="w-2 h-2" src="{{ asset('images/arrowdown.png') }}">
+                <a href="{{ route('dashboard', ['sort' => 'confirmed']) }}"><img class="w-2 h-2" src="{{ asset('images/arrowup.png') }}"></a>
+                <a href="{{ route('dashboard', ['sort' => 'confirmed']) }}"><img class="w-2 h-2" src="{{ asset('images/arrowdown.png') }}"></a>
                 </div>
             </div>
             <div class="flex items-center w-1/4">
                 <h1 class="font-bold">Death</h1>
                 <div class="ml-2">
-                <img class="w-2 h-2" src="{{ asset('images/arrowup.png') }}">
-                <img class="w-2 h-2" src="{{ asset('images/arrowdown.png') }}">
+                <a href="{{ route('dashboard', ['sort' => 'deaths']) }}"><img class="w-2 h-2" src="{{ asset('images/arrowup.png') }}"></a>
+                <a href="{{ route('dashboard', ['sort' => 'deaths']) }}"><img class="w-2 h-2" src="{{ asset('images/arrowdown.png') }}"></a>
                 </div>
             </div>
             <div  class="pr-4 flex items-center w-1/4">
                 <h1 class="font-bold">Recovered</h1>
                 <div class="ml-2">
-                <img class="w-2 h-2" src="{{ asset('images/arrowup.png') }}">
-                <img class="w-2 h-2" src="{{ asset('images/arrowdown.png') }}">
+                <a href="{{ route('dashboard', ['sort' => 'recovered']) }}"><img class="w-2 h-2" src="{{ asset('images/arrowup.png') }}"></a>
+                <a href="{{ route('dashboard', ['sort' => 'recovered']) }}"><img class="w-2 h-2" src="{{ asset('images/arrowdown.png') }}"></a>
                 </div>
             </div>
         </div>
@@ -106,8 +106,8 @@
         <div class="flex items-center justify-between mt-6">
         <h1 class="mt-4 w-1/4">{{ json_decode($country->name, true)[app()->getLocale()]}}</h1>
         <h2 class="w-1/4">{{ $country->confirmed }}</h2>
-        <h2 class="w-1/4">{{ $country->recovered }}</h2>
         <h2 class="w-1/4">{{ $country->deaths }}</h2>
+        <h2 class="w-1/4">{{ $country->recovered }}</h2>
         </div>
         <hr class="mt-2 mb-2">
         @endforeach
@@ -154,6 +154,10 @@
                 }
             });
         });
+
+        //Sort
+        
+        
     </script>
 </body>
 </html>
