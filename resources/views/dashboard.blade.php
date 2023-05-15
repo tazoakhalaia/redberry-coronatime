@@ -154,10 +154,6 @@
                 }
             });
         });
-
-        //Sort
-        
-        
     </script>
 </body>
 </html>
