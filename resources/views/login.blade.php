@@ -17,8 +17,8 @@
         </div>
         <img class="mt-10" src="{{ asset('images/coronatime.png') }}">
             <div class="mt-8">
-                <h1 class="font-medium">{{ trans('language.welcome_back') }}</h1>
-                <p class="mt-2 text-gray-600">{{ trans('language.enter_details') }}</p>
+                <h1 class="font-medium">{{ trans('greet.welcome_back') }}</h1>
+                <p class="mt-2 text-gray-600">{{ trans('greet.enter_details') }}</p>
             </div>
             @if(session('error'))
             <div class="flex p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 w-80 mt-2" role="alert">
@@ -29,8 +29,8 @@
             @endif
             <form action="{{ route('login') }}" method="POST">
                 @csrf
-            <x-input class="pl-3" placeholder="Enter unique username or email" name="username_or_email" label="{{ trans('language.username') }}" type="text" />
-            <x-input class="pl-3" placeholder="Fill in password" name="password" label="{{ trans('language.password') }}" type="password" />
+            <x-input class="pl-3" placeholder="Enter unique username or email" name="username_or_email" label="{{ trans('auth.username') }}" type="text" />
+            <x-input class="pl-3" placeholder="Fill in password" name="password" label="{{ trans('auth.password') }}" type="password" />
             <div class="mt-4 w-80 flex justify-end">
                 <a href="#" class="text-blue-600 font-bold">{{ trans('language.forgot_password') }}</a>
             </div>
