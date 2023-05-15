@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Country;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request) : View
     {
         $countries = Country::all();
         if ($request->input('sort') == 'location') {

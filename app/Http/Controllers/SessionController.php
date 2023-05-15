@@ -30,7 +30,7 @@ class SessionController extends Controller
         return redirect()->route('signup')->with('error', 'Invalid username or password.');
     }
 
-    public function logout()
+    public function logout() : RedirectResponse
     {
         Auth::logout();
         return redirect()->route('signup');
