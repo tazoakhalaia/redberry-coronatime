@@ -17,8 +17,8 @@
         </div>
         <img class="mt-10" src="{{ asset('images/coronatime.png') }}">
             <div class="mt-8">
-                <h1 class="font-medium">{{ trans('language.welcome_back') }}</h1>
-                <p class="mt-2 text-gray-600">{{ trans('language.enter_details') }}</p>
+                <h1 class="font-medium">{{ trans('greet.welcome_back') }}</h1>
+                <p class="mt-2 text-gray-600">{{ trans('greet.enter_details') }}</p>
             </div>
             @if(session('error'))
             <div class="flex p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 w-80 mt-2" role="alert">
