@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Countires;
 use App\Models\Country;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
@@ -29,13 +28,13 @@ class ImportCountry extends Command
     public function handle()
     {
         $response = Http::get('https://devtest.ge/countries');
-        $countires = $response->json();
-        foreach ($countires as $country) {
+        $countries = $response->json();
+        foreach ($countries as $country) {
             $responsePost = Http::post('https://devtest.ge/get-country-statistics', [
                 'code' => $country['code'],
             ]);
             $countryInfo = $responsePost->json();
-            $c = new Countires();
+            $c = new Country();
             $c->name = json_encode([
                 'en' => $country['name']['en'],
                 'ka' => $country['name']['ka']
