@@ -11,11 +11,6 @@ use Illuminate\View\View;
 
 class SessionController extends Controller
 {
-    public function index(): View
-    {
-        return view('login');
-    }
-
     public function login(LoginRequest $request): RedirectResponse
     {
         $isEmail = filter_var($request->username_or_email, FILTER_VALIDATE_EMAIL);
