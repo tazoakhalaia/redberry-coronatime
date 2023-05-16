@@ -47,16 +47,16 @@
             <form action="{{ route('register') }}" method="POST">
                 @csrf
             <x-input class="pl-3" placeholder="Enter unique username" name="username" label="{{ trans('auth.username') }}" type="text" />
-            <p class="text-sm text-gray-500">{{ trans('language.unique') }} </p>
+            <p class="text-sm text-gray-500">{{ trans('auth.unique') }} </p>
             <x-input class="pl-3" placeholder="Enter your email" name="email" label="{{ trans('auth.email') }}" type="email" />
             <x-input class="pl-3" placeholder="Fill in password" name="password" label="{{ trans('auth.password') }}" type="password" />
             <x-input class="pl-3" placeholder="Repeat password" name="repeatpassword" label="{{ trans('auth.repeat_password') }}" type="password" />
-            <x-button class="text-white mt-10" buttonName="{{ trans('language.signup') }}"/>
+            <x-button class="text-white mt-10" buttonName="{{ trans('signup_login.signup') }}"/>
             </form>
             <div class="w-80 mt-5">
                 <div class="flex w-60 m-auto">
-                <p>{{ trans('language.already_have_account') }}</p>
-                <a href="{{ route('signup') }}"><button class="ml-2 font-bold">{{ trans('language.log_in') }}</button></a>
+                <p>{{ trans('question.already_have_account') }}</p>
+                <a href="{{ route('signup') }}"><button class="ml-2 font-bold">{{ trans('signup_login.log_in') }}</button></a>
                 </div>
             </div>
         </div>

@@ -32,14 +32,14 @@
             <x-input class="pl-3" placeholder="Enter unique username or email" name="username_or_email" label="{{ trans('auth.username') }}" type="text" />
             <x-input class="pl-3" placeholder="Fill in password" name="password" label="{{ trans('auth.password') }}" type="password" />
             <div class="mt-4 w-80 flex justify-end">
-                <a href="#" class="text-blue-600 font-bold">{{ trans('language.forgot_password') }}</a>
+                <a href="#" class="text-blue-600 font-bold">{{ trans('question.forgot_password') }}</a>
             </div>
-            <x-button class="text-white mt-6" buttonName="{{ trans('language.signup') }}"/>
+            <x-button class="text-white mt-6" buttonName="{{ trans('signup_login.signup') }}"/>
             </form>
             <div class="w-80 mt-5">
                 <div class="flex w-80 m-auto">
-                <p>{{ trans('language.dont_have_acc') }}</p>
-                <a href="{{ route('register') }}"><button class="ml-2 font-bold">{{ trans('language.signup_free') }}</button></a>
+                <p>{{ trans('question.dont_have_acc') }}</p>
+                <a href="{{ route('register') }}"><button class="ml-2 font-bold">{{ trans('signup_login.signup_free') }}</button></a>
                 </div>
             </div>
         </div>
