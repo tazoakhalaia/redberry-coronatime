@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 return[
     'already_have_account' => 'Already have an account?',
     'signup' => 'Sign Up',
@@ -8,5 +9,4 @@ return[
     'password' => 'Password',
     'repeat_password' => 'Repeat password',
 
-]
-?>
+];

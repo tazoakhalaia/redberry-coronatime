@@ -28,8 +28,8 @@
             <div class="userbox flex">
                 <form method="GET" action="{{ route('dashboard') }}">
                     <select class="mr-10 bg-transparent outline-none" name="lang" onchange="this.form.submit()">
-                    <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English</option>
-                    <option value="ka" {{ app()->getLocale() == 'ka' ? 'selected' : '' }}>Georgian</option>
+                    <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>{{ trans('dashboard.en') }}</option>
+                    <option value="ka" {{ app()->getLocale() == 'ka' ? 'selected' : '' }}>{{ trans('dashboard.ka') }}</option>
                 </select>
             </form>
                 <div class="mr-10 capitalize">
@@ -37,36 +37,36 @@
                 </div>
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
-                    <button class="bg-tranparent capitalize">log out</button>
+                    <button class="bg-tranparent capitalize">{{ trans('dashboard.log_out') }}</button>
                 </form>
             </div>
         </div>
     </header>
     <main class="w-10/12 m-auto">
-    <h1 class="font-bold text-md">Worldwide Statistics</h1>
+    <h1 class="font-bold text-md">{{ trans('dashboard.worldwide_statistic') }}</h1>
     <div class="mt-10">
-    <button class="worldwidebtn">Worldwide</button>
-    <button class="countrybtn ml-10">By country</button>
+    <button class="worldwidebtn">{{ trans('dashboard.worldwide') }}</button>
+    <button class="countrybtn ml-10">{{ trans('dashboard.by_country') }}</button>
     </div>
     <div class="worldwide  w-full mt-10 flex flex-wrap justify-between">
         <div class="newcases w-96 h-60 bg-blue-100 rounded-md flex justify-center mt-6">
             <div>
                 <img class="mt-10" src="{{ asset('images/statisticline.svg') }}">
-                <h1 class="text-center mt-6">New Cases</h1>
+                <h1 class="text-center mt-6">{{ trans('dashboard.new_cases') }}</h1>
                 <h1 class="font-bold text-center mt-6 text-worldwideBlue text-3xl">{{ $totalConfirmed }}</h1>
             </div>
         </div>
         <div class="recovered w-96 h-60 bg-green-100 rounded-md flex justify-center mt-6">
             <div>
                 <img class="mt-10" src="{{ asset('images/statisticgreen.svg') }}">
-                <h1 class="text-center mt-6">Recovered</h1>
+                <h1 class="text-center mt-6">{{ trans('dashboard.recovered') }}</h1>
                 <h1 class="font-bold text-center mt-6 text-worldwideBlue text-3xl">{{ $totalRecovered }}</h1>
             </div>
         </div>
         <div class="death w-96 h-60 bg-yellow-100 rounded-md flex justify-center mt-6">
             <div>
                 <img class="mt-10" src="{{ asset('images/statisticyellow.svg') }}">
-                <h1 class="text-center mt-6">Death</h1>
+                <h1 class="text-center mt-6">{{ trans('dashboard.deaths') }}</h1>
                 <h1 class="font-bold text-center mt-6 text-worldwideBlue text-3xl">{{ $totalDeaths }}</h1>
             </div>
         </div>
@@ -78,28 +78,28 @@
         </form>
         <div class="statisticbar w-full flex justify-between mt-6 bg-gray-100 p-2 rounded-md">
             <div class="flex items-center w-1/4">
-                <h1 class="font-bold">Location</h1>
+                <h1 class="font-bold">{{ trans('dashboard.location') }}</h1>
                 <div class="ml-2">
                 <a href="{{ route('dashboard', ['sort' => 'location']) }}"><img class="w-2 h-2" src="{{ asset('images/arrowup.png') }}"></a>
                 <a href="{{ route('dashboard', ['sort' => 'location']) }}"><img class="w-2 h-2" src="{{ asset('images/arrowdown.png') }}"></a>
                 </div>
             </div>
             <div class="flex items-center w-1/4">
-                <h1 class="font-bold">New Cases</h1>
+                <h1 class="font-bold">{{ trans('dashboard.new_cases') }}</h1>
                 <div class="ml-2">
                 <a href="{{ route('dashboard', ['sort' => 'confirmed']) }}"><img class="w-2 h-2" src="{{ asset('images/arrowup.png') }}"></a>
                 <a href="{{ route('dashboard', ['sort' => 'confirmed']) }}"><img class="w-2 h-2" src="{{ asset('images/arrowdown.png') }}"></a>
                 </div>
             </div>
             <div class="flex items-center w-1/4">
-                <h1 class="font-bold">Death</h1>
+                <h1 class="font-bold">{{ trans('dashboard.deaths') }}</h1>
                 <div class="ml-2">
                 <a href="{{ route('dashboard', ['sort' => 'deaths']) }}"><img class="w-2 h-2" src="{{ asset('images/arrowup.png') }}"></a>
                 <a href="{{ route('dashboard', ['sort' => 'deaths']) }}"><img class="w-2 h-2" src="{{ asset('images/arrowdown.png') }}"></a>
                 </div>
             </div>
             <div  class="pr-4 flex items-center w-1/4">
-                <h1 class="font-bold">Recovered</h1>
+                <h1 class="font-bold">{{ trans('dashboard.recovered') }}</h1>
                 <div class="ml-2">
                 <a href="{{ route('dashboard', ['sort' => 'recovered']) }}"><img class="w-2 h-2" src="{{ asset('images/arrowup.png') }}"></a>
                 <a href="{{ route('dashboard', ['sort' => 'recovered']) }}"><img class="w-2 h-2" src="{{ asset('images/arrowdown.png') }}"></a>

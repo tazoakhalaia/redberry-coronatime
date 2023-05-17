@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 return [
     'forgot_password' => 'Forgot Password?',
     'dont_have_acc' => 'Don’t have an account?',
@@ -6,5 +7,4 @@ return [
     'signup_free' => 'Sign up for free',
     'username' => 'Username',
     'password' => 'Password',
-]
-?>
+];

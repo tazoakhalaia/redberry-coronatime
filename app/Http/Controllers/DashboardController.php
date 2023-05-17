@@ -8,9 +8,9 @@ use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
-    public function index(Request $request) : View
+    public function index(Request $request): View
     {
-        $countries = Country::all(); 
+        $countries = Country::all();
         if ($request->input('sort') == 'location') {
             $countries = $countries->sortBy('name');
         } elseif ($request->input('sort') == 'recovered') {
