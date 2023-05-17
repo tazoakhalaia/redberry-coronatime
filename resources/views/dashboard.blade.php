@@ -49,25 +49,25 @@
     <button class="countrybtn ml-10">{{ trans('dashboard.by_country') }}</button>
     </div>
     <div class="worldwide  w-full mt-10 flex flex-wrap justify-between">
-        <div class="newcases w-96 h-60 bg-blue-100 rounded-md flex justify-center mt-6">
+        <div class="newcases w-96 h-60 bg-newCasesBlue rounded-md flex justify-center mt-6">
             <div class="flex flex-col">
                 <center><img class="mt-10 w-24 h-10" src="{{ asset('images/statisticline.svg') }}"></center>
                 <h1 class="text-center mt-6">{{ trans('dashboard.new_cases') }}</h1>
                 <h1 class="font-bold text-center mt-6 text-worldwideBlue text-3xl">{{ $totalConfirmed }}</h1>
             </div>
         </div>
-        <div class="recovered w-96 h-60 bg-green-100 rounded-md flex justify-center mt-6 sm:w-36 sm:h-48">
+        <div class="recovered w-96 h-60 bg-recoverGreen rounded-md flex justify-center mt-6 sm:w-36 sm:h-48">
             <div class="flex flex-col">
                 <center><img class="mt-10 w-24 h-10" src="{{ asset('images/statisticgreen.svg') }}"></center>
                 <h1 class="text-center mt-6">{{ trans('dashboard.recovered') }}</h1>
-                <h1 class="font-bold text-center mt-6 text-worldwideBlue text-3xl">{{ $totalRecovered }}</h1>
+                <h1 class="font-bold text-center mt-6 text-recoverGreentxt text-3xl">{{ $totalRecovered }}</h1>
             </div>
         </div>
         <div class="death w-96 h-60 bg-yellow-100 rounded-md flex justify-center mt-6 sm:w-36 sm:h-48">
             <div class="flex flex-col">
                 <center><img class="mt-10 w-24 h-10 " src="{{ asset('images/statisticyellow.svg') }}"></center>
                 <h1 class="text-center mt-6">{{ trans('dashboard.deaths') }}</h1>
-                <h1 class="font-bold text-center mt-6 text-worldwideBlue text-3xl">{{ $totalDeaths }}</h1>
+                <h1 class="font-bold text-center mt-6 text-deathsYellow text-3xl">{{ $totalDeaths }}</h1>
             </div>
         </div>
     </div>
