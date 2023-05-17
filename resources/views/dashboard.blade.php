@@ -8,8 +8,20 @@
     <title>Dashboard</title>
 </head>
 <body>
+    @php
+    $totalConfirmed = 0;
+    $totalDeaths = 0;
+    $totalRecovered = 0;
+    @endphp
+    @foreach($countries as $country)
+    @php
+    $totalConfirmed += $country->confirmed;
+    $totalDeaths += $country->deaths;
+    $totalRecovered += $country->recovered;
+    @endphp
+    @endforeach
     <header class="w-full h-20">
-        <div class="m-auto w-10/12 h-full flex justify-between items-center">
+        <div class="m-auto  w-10/12 h-full flex justify-between items-center">
             <div>
                 <img src="{{ asset('images/coronatime.svg') }}">
             </div>
@@ -41,21 +53,21 @@
             <div>
                 <img class="mt-10" src="{{ asset('images/statisticline.svg') }}">
                 <h1 class="text-center mt-6">New Cases</h1>
-                <h1 class="font-bold text-center mt-6 text-worldwideBlue text-3xl">715,222</h1>
+                <h1 class="font-bold text-center mt-6 text-worldwideBlue text-3xl">{{ $totalConfirmed }}</h1>
             </div>
         </div>
         <div class="recovered w-96 h-60 bg-green-100 rounded-md flex justify-center mt-6">
             <div>
                 <img class="mt-10" src="{{ asset('images/statisticgreen.svg') }}">
                 <h1 class="text-center mt-6">Recovered</h1>
-                <h1 class="font-bold text-center mt-6 text-worldwideBlue text-3xl">71,222</h1>
+                <h1 class="font-bold text-center mt-6 text-worldwideBlue text-3xl">{{ $totalRecovered }}</h1>
             </div>
         </div>
         <div class="death w-96 h-60 bg-yellow-100 rounded-md flex justify-center mt-6">
             <div>
                 <img class="mt-10" src="{{ asset('images/statisticyellow.svg') }}">
                 <h1 class="text-center mt-6">Death</h1>
-                <h1 class="font-bold text-center mt-6 text-worldwideBlue text-3xl">711</h1>
+                <h1 class="font-bold text-center mt-6 text-worldwideBlue text-3xl">{{ $totalDeaths }}</h1>
             </div>
         </div>
     </div>
@@ -64,7 +76,7 @@
             <input class="search-input border-2 rounded-md h-full w-full pl-10 border-gray-200 outline-none" name="query" type="text" placeholder="Search By Country">
             <img class="absolute top-1/2 transform -translate-y-1/2 ml-4" src="{{ asset('images/search.svg') }}">
         </form>
-        <div class="statisticbar flex justify-between mt-6 bg-gray-100 p-2 rounded-md">
+        <div class="statisticbar w-full flex justify-between mt-6 bg-gray-100 p-2 rounded-md">
             <div class="flex items-center w-1/4">
                 <h1 class="font-bold">Location</h1>
                 <div class="ml-2">
@@ -94,20 +106,20 @@
                 </div>
             </div>
         </div>
-        <div class="h-countryBox overflow-y-auto mt-10 pr-4">
+        <div class="h-countryBox w-full overflow-y-auto mt-10 pr-4">
             <div class="flex justify-between items-center">
-            <h1 class="w-1/4">Worldwide</h1>
-            <h2 class="w-1/4">9,000,000</h2>
-            <h2 class="w-1/4">60,000</h2>
-            <h2 class="w-1/4">5,000,00</h2>
+                <h1 class="w-1/4">Worldwide</h1>
+                <h2 class="w-1/4 ml-6">{{ $totalConfirmed }}</h2>
+                <h2 class="w-1/4 ml-6">{{ $totalDeaths }}</h2>
+                <h2 class="w-1/4 ml-6">{{ $totalRecovered }}</h2>
             </div>
             <hr class="mt-2">
         @foreach ($countries as $country)
         <div class="flex items-center justify-between mt-6">
         <h1 class="mt-4 w-1/4">{{ json_decode($country->name, true)[app()->getLocale()]}}</h1>
-        <h2 class="w-1/4">{{ $country->confirmed }}</h2>
-        <h2 class="w-1/4">{{ $country->deaths }}</h2>
-        <h2 class="w-1/4">{{ $country->recovered }}</h2>
+        <h2 class="w-1/4 ml-6">{{ $country->confirmed }}</h2>
+        <h2 class="w-1/4 ml-6">{{ $country->deaths }}</h2>
+        <h2 class="w-1/4 ml-6">{{ $country->recovered }}</h2>
         </div>
         <hr class="mt-2 mb-2">
         @endforeach
@@ -154,6 +166,9 @@
                 }
             });
         });
+
+        ////
+        
     </script>
 </body>
 </html>
