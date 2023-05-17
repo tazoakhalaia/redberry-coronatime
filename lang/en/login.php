@@ -2,6 +2,7 @@
 return [
     'forgot_password' => 'Forgot Password?',
     'dont_have_acc' => 'Don’t have an account?',
-    'already_have_account' => 'Already have an account?',
+    'log_in' => 'Log in',
+    'signup_free' => 'Sign up for free',
 ]
 ?>
