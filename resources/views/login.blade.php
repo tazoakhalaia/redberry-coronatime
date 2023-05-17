@@ -29,8 +29,8 @@
             @endif
             <form action="{{ route('login') }}" method="POST">
                 @csrf
-            <x-input class="pl-3" placeholder="Enter unique username or email" name="username_or_email" label="{{ trans('auth.username') }}" type="text" />
-            <x-input class="pl-3" placeholder="Fill in password" name="password" label="{{ trans('auth.password') }}" type="password" />
+            <x-input class="pl-3" placeholder="Enter unique username or email" name="username_or_email" label="{{ trans('login.username') }}" type="text" />
+            <x-input class="pl-3" placeholder="Fill in password" name="password" label="{{ trans('login.password') }}" type="password" />
             <div class="mt-4 w-80 flex justify-end">
                 <a href="#" class="text-blue-600 font-bold">{{ trans('login.forgot_password') }}</a>
             </div>
