@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        'xxs': '0.6rem'
+      },
       screens:{
         'sm': {'max': '375px'}
       },

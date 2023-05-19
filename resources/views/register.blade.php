@@ -36,8 +36,8 @@
         dark:text-black-400" role="alert">{{ session('error') }}</div>
         @endif
         <div class="flex mt-10">
-    <a href="{{ route('register', ['lang' => 'ka']) }}"><img class="w-8 h-5" src="{{ asset('images/georgia.jpg') }}"></a>
-    <a href="{{ route('register', ['lang' => 'en']) }}"><img class="w-8 h-5 ml-2" src="{{ asset('images/english.png') }}"></a>
+    <a href="{{ route('register.index', ['lang' => 'ka']) }}"><img class="w-8 h-5" src="{{ asset('images/georgia.jpg') }}"></a>
+    <a href="{{ route('register.index', ['lang' => 'en']) }}"><img class="w-8 h-5 ml-2" src="{{ asset('images/english.png') }}"></a>
         </div>
         <img class="mt-10" src="{{ asset('images/coronatime.png') }}">
             <div class="mt-8">
