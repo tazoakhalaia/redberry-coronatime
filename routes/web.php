@@ -1,12 +1,15 @@
 <?php
 
-use App\Http\Controllers\LandingController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SessionController;
 
-
-Route::get('/', [LandingController::class, 'index'])->name('landing');
+Route::group(['middleware' => 'setLocale', 'controller' => SessionController::class], function(){
+    Route::view('/', 'login')->name('signup');
+    Route::post('/login', 'login')->name('login');
+});
+Route::view('/dashboard', 'dashboard')->name('dashboard')->middleware('user.auth');
 
 Route::group(['middleware' => 'setLocale', 'controller' => RegisterController::class], function(){
     Route::get('/register', 'index')->name('register');

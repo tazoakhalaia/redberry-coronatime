@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Landing</h1>
+    <h1>dashboard</h1>
 </body>
 </html>

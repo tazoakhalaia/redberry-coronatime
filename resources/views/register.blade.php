@@ -41,22 +41,22 @@
         </div>
         <img class="mt-10" src="{{ asset('images/coronatime.png') }}">
             <div class="mt-8">
-                <h1 class="font-medium">{{ trans('language.welcome') }}</h1>
-                <p class="mt-2 text-gray-600">{{ trans('language.alert') }}</p>
+                <h1 class="font-medium">{{ trans('greet.welcome') }}</h1>
+                <p class="mt-2 text-gray-600">{{ trans('greet.alert') }}</p>
             </div>
             <form action="{{ route('register') }}" method="POST">
                 @csrf
-            <x-input class="pl-3" placeholder="Enter unique username" name="username" label="{{ trans('language.username') }}" type="text" />
-            <p class="text-sm text-gray-500">{{ trans('language.unique') }} </p>
-            <x-input class="pl-3" placeholder="Enter your email" name="email" label="{{ trans('language.email') }}" type="email" />
-            <x-input class="pl-3" placeholder="Fill in password" name="password" label="{{ trans('language.password') }}" type="password" />
-            <x-input class="pl-3" placeholder="Repeat password" name="repeatpassword" label="{{ trans('language.repeat_password') }}" type="password" />
-            <x-button class="text-white mt-10" buttonName="{{ trans('language.signup') }}"/>
+            <x-input class="pl-3" placeholder="Enter unique username" name="username" label="{{ trans('register.username') }}" type="text" />
+            <p class="text-sm text-gray-500">{{ trans('register.unique') }} </p>
+            <x-input class="pl-3" placeholder="Enter your email" name="email" label="{{ trans('register.email') }}" type="email" />
+            <x-input class="pl-3" placeholder="Fill in password" name="password" label="{{ trans('register.password') }}" type="password" />
+            <x-input class="pl-3" placeholder="Repeat password" name="repeatpassword" label="{{ trans('register.repeat_password') }}" type="password" />
+            <x-button class="text-white mt-10" buttonName="{{ trans('register.signup') }}"/>
             </form>
             <div class="w-80 mt-5">
                 <div class="flex w-60 m-auto">
-                <p>{{ trans('language.already_have_account') }}</p>
-                <a href="/"><button class="ml-2 font-bold">{{ trans('language.log_in') }}</button></a>
+                <p>{{ trans('register.already_have_account') }}</p>
+                <a href="{{ route('login') }}"><button class="ml-2 font-bold">{{ trans('login.log_in') }}</button></a>
                 </div>
             </div>
         </div>
