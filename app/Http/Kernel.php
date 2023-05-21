@@ -2,7 +2,7 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\AuthMiddleware;
 use App\Http\Middleware\LocaleMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -57,7 +57,7 @@ class Kernel extends HttpKernel
     protected $middlewareAliases = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         'setLocale' => LocaleMiddleware::class,
-        'admin' => AdminMiddleware::class,
+        'user.auth' => AuthMiddleware::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

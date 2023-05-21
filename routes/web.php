@@ -9,7 +9,7 @@ Route::group(['middleware' => 'setLocale', 'controller' => SessionController::cl
     Route::view('/', 'login')->name('signup');
     Route::post('/login', 'login')->name('login');
 });
-Route::view('/dashboard', 'dashboard')->name('dashboard')->middleware('admin');
+Route::view('/dashboard', 'dashboard')->name('dashboard')->middleware('user.auth');
 
 Route::group(['middleware' => 'setLocale', 'controller' => RegisterController::class], function(){
     Route::get('/register', 'index')->name('register');
