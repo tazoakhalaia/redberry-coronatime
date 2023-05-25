@@ -34,16 +34,16 @@ class ImportCountry extends Command
                 'code' => $country['code'],
             ]);
             $countryInfo = $responsePost->json();
-            $c = new Country();
-            $c->name = json_encode([
+            $allCountry = new Country();
+            $allCountry->name = json_encode([
                 'en' => $country['name']['en'],
                 'ka' => $country['name']['ka']
             ]);
-            $c->confirmed = $countryInfo['confirmed'];
-            $c->recovered = $countryInfo['recovered'];
-            $c->critical = $countryInfo['critical'];
-            $c->deaths = $countryInfo['deaths'];
-            $c->save();
+            $allCountry->confirmed = $countryInfo['confirmed'];
+            $allCountry->recovered = $countryInfo['recovered'];
+            $allCountry->critical = $countryInfo['critical'];
+            $allCountry->deaths = $countryInfo['deaths'];
+            $allCountry->save();
         }
 
         $this->info('Countries imported successfully!');

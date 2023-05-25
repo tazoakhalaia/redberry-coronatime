@@ -14,11 +14,6 @@ use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
-    public function index(): View
-    {
-        return view('register');
-    }
-
     public function register(RegisterRequest $request): RedirectResponse
     {
         if ($request->password !== $request->input('repeatpassword')) {

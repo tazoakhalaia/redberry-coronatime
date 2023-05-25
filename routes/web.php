@@ -19,7 +19,7 @@ Route::group(['middleware' => 'admin', 'controller' => DashboardController::clas
 
 
 Route::group(['middleware' => 'setLocale', 'controller' => RegisterController::class], function () {
-    Route::get('/register', 'index')->name('register.index');
+    Route::view('/register', 'register')->name('register.index');
     Route::post('/register', 'register')->name('register');
 });
 
