@@ -6,17 +6,16 @@ use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionController;
 
-Route::group(['middleware' => 'setLocale', 'controller' => SessionController::class], function () {
+Route::group(['middleware' => 'setLocale', 'controller' => SessionController::class], function(){
     Route::view('/', 'login')->name('signup');
     Route::post('/login', 'login')->name('login');
     Route::post('/logout', 'logout')->name('logout');
 });
 Route::group(['middleware' => 'admin', 'controller' => DashboardController::class], function () {
     Route::middleware('setLocale')->group(function () {
-        Route::get('/dashboard', 'index')->name('dashboard');
+        Route::get('/dashboard', 'index')->name('dashboard')->middleware('user.auth');
     });
 });
-
 
 Route::group(['middleware' => 'setLocale', 'controller' => RegisterController::class], function () {
     Route::view('/register', 'register')->name('register.index');

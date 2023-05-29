@@ -55,8 +55,8 @@
             </form>
             <div class="w-80 mt-5">
                 <div class="flex w-60 m-auto">
-                <p>{{ trans('register.already_have_account') }}</p>
-                <a href="{{ route('signup') }}"><button class="ml-2 font-bold">{{ trans('login.log_in') }}</button></a>
+                <p>{{ trans('language.already_have_account') }}</p>
+                <a href="{{ route('login') }}"><button class="ml-2 font-bold">{{ trans('language.log_in') }}</button></a>
                 </div>
             </div>
         </div>

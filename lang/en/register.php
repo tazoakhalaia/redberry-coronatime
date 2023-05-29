@@ -8,5 +8,6 @@ return[
     'email' => 'Email',
     'password' => 'Password',
     'repeat_password' => 'Repeat password',
-
 ];
+?>
+

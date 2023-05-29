@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 <?php
 
+=======
+<?php 
+>>>>>>> origin/main
 return[
     'already_have_account' => 'უკვე გავქთ ანგარიში?',
     'signup' => 'დარეგისტრირება',
@@ -8,4 +12,9 @@ return[
     'email' => 'მეილი',
     'password' => 'პაროლი',
     'repeat_password' => 'გაიმეორეთ პაროლი',
+<<<<<<< HEAD
 ];
+=======
+]
+?>
+>>>>>>> origin/main

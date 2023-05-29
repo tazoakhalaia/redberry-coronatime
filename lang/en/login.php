@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 <?php
 
+=======
+<?php 
+>>>>>>> origin/main
 return [
     'forgot_password' => 'Forgot Password?',
     'dont_have_account' => 'Don’t have an account?',
@@ -7,4 +11,9 @@ return [
     'signup_free' => 'Sign up for free',
     'username' => 'Username',
     'password' => 'Password',
+<<<<<<< HEAD
 ];
+=======
+]
+?>
+>>>>>>> origin/main
