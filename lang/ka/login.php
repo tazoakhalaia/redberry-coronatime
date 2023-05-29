@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-<?php
-
-=======
 <?php 
->>>>>>> origin/main
+
 return [
     'forgot_password' => "დაგავიწყდათ პაროლი?",
     'dont_have_account' => 'არ გაქვთ ანგარიში?',
@@ -11,9 +7,6 @@ return [
     'signup_free' => 'დარეგისტრირდი უფასოდ',
     'username' => 'მომხმარებლის სახელი',
     'password' => 'პაროლი',
-<<<<<<< HEAD
 ];
-=======
-]
 ?>
->>>>>>> origin/main
+

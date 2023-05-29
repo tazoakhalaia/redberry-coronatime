@@ -35,14 +35,13 @@
                 <a href="#" class="text-blue-600 font-bold">{{ trans('login.forgot_password') }}</a>
             </div>
             <x-button class="text-white mt-6" buttonName="{{ trans('login.log_in') }}"/>
-            <x-button class="text-white mt-6" buttonName="{{ trans('login.signup') }}"/>
+            
             </form>
             <div class="w-80 mt-5">
                 <div class="flex w-80 m-auto">
                 <p>{{ trans('login.dont_have_account') }}</p>
 
                 <a href="{{ route('register.index') }}"><button class="ml-2 font-bold">{{ trans('login.signup_free') }}</button></a>
-                <a href="{{ route('register') }}"><button class="ml-2 font-bold">{{ trans('login.signup_free') }}</button></a>
 
                 </div>
             </div>

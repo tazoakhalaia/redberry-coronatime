@@ -6,7 +6,7 @@ use App\Models\Country;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
-class ImportCountry extends Command
+class CoronaVirusStatistics extends Command
 {
     /**
      * The name and signature of the console command.
@@ -20,7 +20,7 @@ class ImportCountry extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Retrieve and Save Global Corona Stats by Country';
 
     /**
      * Execute the console command.
@@ -30,10 +30,10 @@ class ImportCountry extends Command
         $response = Http::get('https://devtest.ge/countries');
         $countries = $response->json();
         foreach ($countries as $country) {
-            $responsePost = Http::post('https://devtest.ge/get-country-statistics', [
+            $countryStatisctis = Http::post('https://devtest.ge/get-country-statistics', [
                 'code' => $country['code'],
             ]);
-            $countryInfo = $responsePost->json();
+            $countryInfo = $countryStatisctis->json();
             $allCountries = new Country();
             $allCountries->name = json_encode([
                 'en' => $country['name']['en'],
