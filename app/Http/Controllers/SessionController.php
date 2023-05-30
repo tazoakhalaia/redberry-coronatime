@@ -16,7 +16,6 @@ class SessionController extends Controller
     $fieldType = filter_var($request->username_or_email, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
     if (auth()->attempt(array($fieldType => $input['username_or_email'], 'password' => $input['password']))) {
         if (!auth()->user()->verify) {
-            auth()->logout();
             return redirect()->route('signup')->with('error', 'Please verify your account.');
         }
         return redirect()->route('dashboard');
