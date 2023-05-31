@@ -21,4 +21,18 @@ class RegisterRequest extends FormRequest
             'token' => 'string'
         ];
     }
+
+    public function withValidator($validator)
+    {
+        $validator->addRules([
+            'repeatpassword' => 'required|same:password',
+        ]);
+    }
+
+    public function prepareForValidation()
+    {
+        $this->merge([
+            'token' => Str::random(40),
+        ]);
+    }
 }

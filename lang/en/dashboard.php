@@ -4,7 +4,7 @@ return[
     'by_country' => 'By Country',
     'worldwide' => 'WorldWide',
     'en' => 'English',
-    'ka' => 'Georgia',
+    'ka' => 'Georgian',
     'log_out' => 'Log out',
     'new_cases' => 'New Cases',
     'deaths' => 'Deaths',

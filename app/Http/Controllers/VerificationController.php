@@ -9,8 +9,10 @@ class VerificationController extends Controller
 {
     public function verify(User $user): RedirectResponse
     {
-        $user->verify = true;
-        $user->save();
+        $user->update([
+            'verify' => true
+        ]);
+        
         return redirect()->route('confirm', ['token' => $user->token]);
     }
 

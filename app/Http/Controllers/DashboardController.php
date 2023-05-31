@@ -14,7 +14,22 @@ class DashboardController extends Controller
     $direction = $request->input('direction', 'asc'); 
     $countries = Country::sortByField($sort, $direction)->get();
     
-    return view('dashboard', ['countries' => $countries, 'user' => auth()->user()]);
+    $totalConfirmed = $countries->sum('confirmed');
+    $totalDeaths = $countries->sum('deaths');
+    $totalRecovered = $countries->sum('recovered');
+
+    $query = $request->input('query');
+    $results = Country::where('name', 'like', '%' . $query . '%')->get();
+
+    return view('dashboard', [
+    'countries' => $countries, 
+    'user' => auth()->user(), 
+    'totalConfirmed' => $totalConfirmed,
+    'totalDeaths' => $totalDeaths,
+    'totalRecovered' => $totalRecovered,
+    'results' => $results,
+    'query' => $query,
+]);
 }
 
 }

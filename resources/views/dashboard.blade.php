@@ -8,18 +8,6 @@
     <title>Dashboard</title>
 </head>
 <body>
-    @php
-    $totalConfirmed = 0;
-    $totalDeaths = 0;
-    $totalRecovered = 0;
-    @endphp
-    @foreach($countries as $country)
-    @php
-    $totalConfirmed += $country->confirmed;
-    $totalDeaths += $country->deaths;
-    $totalRecovered += $country->recovered;
-    @endphp
-    @endforeach
     <header class="w-full h-20">
         <div class="m-auto  w-10/12 h-full flex justify-between items-center">
             <div>
@@ -28,8 +16,8 @@
             <div class="userbox flex">
                 <form method="GET" action="{{ route('dashboard') }}">
                     <select class="mr-10 bg-transparent outline-none sm:mr-0 sm:w-20" name="lang" onchange="this.form.submit()">
-                    <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>{{ trans('dashboard.en') }}</option>
-                    <option value="ka" {{ app()->getLocale() == 'ka' ? 'selected' : '' }}>{{ trans('dashboard.ka') }}</option>
+                    <option value="en" {{ app()->getLocale() === 'en' ? 'selected' : '' }}>{{ trans('dashboard.en') }}</option>
+                    <option value="ka" {{ app()->getLocale() === 'ka' ? 'selected' : '' }}>{{ trans('dashboard.ka') }}</option>
                 </select>
             </form>
                 <div class="mr-10 capitalize">
@@ -51,7 +39,7 @@
     <button class="worldwidebtn sm:text-xs">{{ trans('dashboard.worldwide') }}</button>
     <button class="countrybtn ml-10 sm:text-xs">{{ trans('dashboard.by_country') }}</button>
     </div>
-    <div class="worldwide  w-full mt-10 flex flex-wrap justify-between mb-4">
+    <div class="worldwide hidden  w-full mt-10 flex flex-wrap justify-between mb-4">
         <div class="newcases w-96 h-60 bg-newCasesBlue rounded-lg flex justify-center mt-6">
             <div class="flex flex-col">
                 <center><img class="mt-10 w-24 h-10" src="{{ asset('images/statisticline.svg') }}"></center>
@@ -74,9 +62,9 @@
             </div>
         </div>
     </div>
-    <div class="country hidden  w-full mt-10">
-        <form class="h-10 w-64 relative">
-            <input class="search-input border-2 rounded-md h-full w-full pl-10 border-gray-200 outline-none" name="query" type="text" placeholder="Search By Country">
+    <div class="country   w-full mt-10">
+        <form action="{{ route('dashboard.search') }}" method="GET" class="h-10 w-64 relative">
+            <input class="search-input border-2 rounded-md h-full w-full pl-10 border-gray-200 outline-none" type="text" name="query" placeholder="Search..." onkeydown="if(event.key === 'Enter') this.form.submit()" value="{{ $query ?? '' }}">
             <img class="absolute top-1/2 transform -translate-y-1/2 ml-4" src="{{ asset('images/search.svg') }}">
         </form>
         <div class="statisticbar w-full flex justify-between mt-6 bg-gray-100 p-2 rounded-md">
@@ -124,6 +112,9 @@
             </div>
             <hr class="mt-2">
         @foreach ($countries as $country)
+        @if (isset($results) && count($results) > 0 && !$results->contains('name', $country->name))
+        @continue
+        @endif
         <div class="flex items-center justify-between mt-6">
             <h1 class="mt-4 w-1/4 sm:w-16 sm:mt-4 sm:text-xxs">{{ json_decode($country->name, true)[app()->getLocale()]}}</h1>
             <div class="w-1/4 ml-6 sm:mt-4 sm:w-16">
@@ -162,27 +153,6 @@
             countrybtn.style.fontWeight = "500"
             worldWideBtn.style.fontWeight = "300"
         });
-
-        //Search
-        const searchInput = document.querySelector('.search-input');
-        const countryNames = Array.from(document.querySelectorAll('.h-countryBox h1')).map(h1 => h1.textContent.trim().toLowerCase());
-        searchInput.addEventListener('input', function() {
-            const query = this.value.trim().toLowerCase();
-            const filteredCountryNames = countryNames.filter(name => name.includes(query));
-            const countryElements = Array.from(document.querySelectorAll('.h-countryBox h1'));
-            const hrElements = Array.from(document.querySelectorAll('.h-countryBox hr'));
-            countryElements.forEach((element, i) => {
-                if (filteredCountryNames.includes(element.textContent.trim().toLowerCase())) {
-                    element.parentElement.style.display = '';
-                    hrElements[i].style.display = '';
-                } else {
-                    element.parentElement.style.display = 'none';
-                    hrElements[i].style.display = 'none';
-                }
-            });
-        });
-
-        ////
         
     </script>
 </body>

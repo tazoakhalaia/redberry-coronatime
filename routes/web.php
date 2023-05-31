@@ -13,12 +13,14 @@ Route::group(['middleware' => 'setLocale', 'controller' => SessionController::cl
 });
 Route::group(['middleware' => ['user.auth', 'setLocale'], 'controller' => DashboardController::class], function () {
         Route::get('/dashboard', 'index')->name('dashboard');
+        Route::get('/dashboard/search', 'index')->name('dashboard.search');
 });
 
 Route::group(['middleware' => 'setLocale', 'controller' => RegisterController::class], function () {
     Route::view('/register', 'register')->name('register.index');
     Route::post('/register', 'register')->name('register');
 });
+
 
 Route::view('/send-email', 'confirm-email')->name('send-email');
 Route::view('/account-confirm/{token}', 'account_confirm_page.account-confirm')->name('confirm');

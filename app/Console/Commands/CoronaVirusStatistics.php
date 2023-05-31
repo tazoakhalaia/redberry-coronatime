@@ -13,7 +13,7 @@ class CoronaVirusStatistics extends Command
      *
      * @var string
      */
-    protected $signature = 'import:countries';
+    protected $signature = 'fetch:covid-statistics';
 
     /**
      * The console command description.
