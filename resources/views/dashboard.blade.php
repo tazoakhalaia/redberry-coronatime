@@ -39,7 +39,7 @@
     <button class="worldwidebtn sm:text-xs">{{ trans('dashboard.worldwide') }}</button>
     <button class="countrybtn ml-10 sm:text-xs">{{ trans('dashboard.by_country') }}</button>
     </div>
-    <div class="worldwide hidden  w-full mt-10 flex flex-wrap justify-between mb-4">
+    <div class="worldwide   w-full mt-10 flex flex-wrap justify-between mb-4">
         <div class="newcases w-96 h-60 bg-newCasesBlue rounded-lg flex justify-center mt-6">
             <div class="flex flex-col">
                 <center><img class="mt-10 w-24 h-10" src="{{ asset('images/statisticline.svg') }}"></center>
@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-    <div class="country   w-full mt-10">
+    <div class="country hidden  w-full mt-10">
         <form action="{{ route('dashboard.search') }}" method="GET" class="h-10 w-64 relative">
             <input class="search-input border-2 rounded-md h-full w-full pl-10 border-gray-200 outline-none" type="text" name="query" placeholder="Search..." onkeydown="if(event.key === 'Enter') this.form.submit()" value="{{ $query ?? '' }}">
             <img class="absolute top-1/2 transform -translate-y-1/2 ml-4" src="{{ asset('images/search.svg') }}">
