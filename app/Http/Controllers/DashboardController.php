@@ -11,25 +11,20 @@ use Illuminate\View\View;
 class DashboardController extends Controller
 {
     public function index(SortRequest $request): View
-{
-    $sort = $request->sort;
-    $direction = $request->direction ?? 'asc';
-    $countries = Country::sortByField($sort, $direction)->get();
+    {
+        $sort = $request->sort;
+        $direction = $request->direction ?? 'asc';
+        $countries = Country::sortByField($sort, $direction)->get();
+        $results = Country::where('name', 'like', '%' . $request->query('query') . '%')->get();
 
-    $query = $request->query('query');
-    $results = Country::where('name', 'like', '%' . $query . '%')->get();
+        $statistics = CountryStatisticsService::calculateStatistics();
 
-    $countryStatisticsService = new CountryStatisticsService();
-    $statistics = $countryStatisticsService->calculateStatistics();
-
-
-    return view('dashboard', [
-    'countries' => $countries, 
-    'user' => auth()->user(), 
-    'statistics' => $statistics,
-    'results' => $results,
-    'query' => $query,
+        return view('dashboard', [
+        'countries' => $countries,
+        'user' => auth()->user(),
+        'statistics' => $statistics,
+        'results' => $results,
 ]);
-}
+    }
 
 }

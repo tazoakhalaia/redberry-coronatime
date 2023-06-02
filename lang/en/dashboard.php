@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 return[
     'worldwide_statistic' => 'WorldWide Statistics',
     'by_country' => 'By Country',
@@ -10,5 +11,4 @@ return[
     'deaths' => 'Deaths',
     'recovered' => 'Recovered',
     'location' => 'Location'
-]
-?>
+];

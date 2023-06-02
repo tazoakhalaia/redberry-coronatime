@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 
 return [
     'welcome' => 'კეთილი იყოს თქვენი მობრძანება Coronatime-ში',
@@ -7,4 +8,3 @@ return [
     'welcome_back' => 'კეთილი იყოს თქვენი დაბრუნება!',
 
 ];
-

@@ -6,7 +6,7 @@ use App\Models\Country;
 
 class CountryStatisticsService
 {
-    public function calculateStatistics(): array
+    public static function calculateStatistics(): array
     {
         $countries = Country::all();
 

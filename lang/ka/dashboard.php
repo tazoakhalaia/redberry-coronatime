@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 return[
     'worldwide_statistic' => 'მსოფლიო სტატისტიკა',
     'by_country' => 'ქვეყნების მიხედვით',
@@ -10,5 +11,4 @@ return[
     'deaths' => 'სიკვდილი',
     'recovered' => 'გადაიტანა',
     'location' => 'ქვეყანა'
-]
-?>
+];

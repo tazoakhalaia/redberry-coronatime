@@ -12,7 +12,7 @@ class VerificationController extends Controller
         $user->update([
             'verify' => true
         ]);
-        
+
         return redirect()->route('confirm', ['token' => $user->token]);
     }
 

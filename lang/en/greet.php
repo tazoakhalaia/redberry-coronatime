@@ -1,5 +1,5 @@
 
-<?php 
+<?php
 return [
     'welcome' => 'Welcome to Coronatime',
     'alert' => 'Please enter required info to sign up',

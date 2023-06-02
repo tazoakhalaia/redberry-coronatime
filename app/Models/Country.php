@@ -10,14 +10,14 @@ class Country extends Model
 {
     use HasFactory;
     protected $fillable = ['name'];
-    public function scopeSortByField($query, $field, $direction = 'asc') : QueryBuilder
-{
-    $sortableFields = ['name', 'recovered', 'deaths', 'confirmed'];
-    if (!in_array($field, $sortableFields)) {
-        return $query;
+    public function scopeSortByField($query, $field, string $direction = 'asc'): QueryBuilder
+    {
+        $sortableFields = ['name', 'recovered', 'deaths', 'confirmed'];
+        if (!in_array($field, $sortableFields)) {
+            return $query;
+        }
+
+        return $query->orderBy($field, $direction);
     }
-    
-    return $query->orderBy($field, $direction);
-}
 
 }
