@@ -36,8 +36,8 @@
         dark:text-black-400" role="alert">{{ session('error') }}</div>
         @endif
         <div class="flex mt-10">
-    <a href="{{ route('register.index', ['lang' => 'ka']) }}"><img class="w-8 h-5" src="{{ asset('images/georgia.jpg') }}"></a>
-    <a href="{{ route('register.index', ['lang' => 'en']) }}"><img class="w-8 h-5 ml-2" src="{{ asset('images/english.png') }}"></a>
+    <a href="{{ route('registration', ['lang' => 'ka']) }}"><img class="w-8 h-5" src="{{ asset('images/georgia.jpg') }}"></a>
+    <a href="{{ route('registration', ['lang' => 'en']) }}"><img class="w-8 h-5 ml-2" src="{{ asset('images/english.png') }}"></a>
         </div>
         <img class="mt-10" src="{{ asset('images/coronatime.png') }}">
             <div class="mt-8">
@@ -50,7 +50,7 @@
             <p class="text-sm text-gray-500">{{ trans('register.unique') }} </p>
             <x-input class="pl-3" placeholder="Enter your email" name="email" label="{{ trans('register.email') }}" type="email" />
             <x-input class="pl-3" placeholder="Fill in password" name="password" label="{{ trans('register.password') }}" type="password" />
-            <x-input class="pl-3" placeholder="Repeat password" name="repeatpassword" label="{{ trans('register.repeat_password') }}" type="password" />
+            <x-input class="pl-3" placeholder="Repeat password" name="repeatPassword" label="{{ trans('register.repeat_password') }}" type="password" />
             <x-button class="text-white mt-10" buttonName="{{ trans('register.signup') }}"/>
             </form>
             <div class="w-80 mt-5">

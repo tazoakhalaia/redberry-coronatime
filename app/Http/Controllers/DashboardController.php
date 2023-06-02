@@ -2,31 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SortRequest;
 use App\Models\Country;
+use App\Services\CountryStatisticsService;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
-    public function index(Request $request): View
+    public function index(SortRequest $request): View
 {
-    $sort = $request->input('sort');
-    $direction = $request->input('direction', 'asc'); 
+    $sort = $request->sort;
+    $direction = $request->direction ?? 'asc';
     $countries = Country::sortByField($sort, $direction)->get();
-    
-    $totalConfirmed = $countries->sum('confirmed');
-    $totalDeaths = $countries->sum('deaths');
-    $totalRecovered = $countries->sum('recovered');
 
-    $query = $request->input('query');
+    $query = $request->query('query');
     $results = Country::where('name', 'like', '%' . $query . '%')->get();
+
+    $countryStatisticsService = new CountryStatisticsService();
+    $statistics = $countryStatisticsService->calculateStatistics();
+
 
     return view('dashboard', [
     'countries' => $countries, 
     'user' => auth()->user(), 
-    'totalConfirmed' => $totalConfirmed,
-    'totalDeaths' => $totalDeaths,
-    'totalRecovered' => $totalRecovered,
+    'statistics' => $statistics,
     'results' => $results,
     'query' => $query,
 ]);

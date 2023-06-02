@@ -18,15 +18,9 @@ class RegisterRequest extends FormRequest
             'username' => 'required|min:3',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:3',
+            'repeatPassword' => 'required|same:password',
             'token' => 'string'
         ];
-    }
-
-    public function withValidator($validator)
-    {
-        $validator->addRules([
-            'repeatpassword' => 'required|same:password',
-        ]);
     }
 
     public function prepareForValidation()

@@ -41,7 +41,7 @@
                 <div class="flex w-80 m-auto">
                 <p>{{ trans('login.dont_have_account') }}</p>
 
-                <a href="{{ route('register.index') }}"><button class="ml-2 font-bold">{{ trans('login.signup_free') }}</button></a>
+                <a href="{{ route('registration') }}"><button class="ml-2 font-bold">{{ trans('login.signup_free') }}</button></a>
 
                 </div>
             </div>

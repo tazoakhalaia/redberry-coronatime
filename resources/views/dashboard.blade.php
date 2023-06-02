@@ -44,26 +44,26 @@
             <div class="flex flex-col">
                 <center><img class="mt-10 w-24 h-10" src="{{ asset('images/statisticline.svg') }}"></center>
                 <h1 class="text-center mt-6">{{ trans('dashboard.new_cases') }}</h1>
-                <h1 class="font-bold text-center mt-6 text-worldwideBlue text-3xl">{{ $totalConfirmed }}</h1>
+                <h1 class="font-bold text-center mt-6 text-worldwideBlue text-3xl">{{ $statistics['totalConfirmed'] }}</h1>
             </div>
         </div>
         <div class="recovered w-96 h-60 bg-recoverGreen rounded-lg flex justify-center mt-6 sm:w-36 sm:h-52">
             <div class="flex flex-col">
                 <center><img class="mt-10 w-24 h-10" src="{{ asset('images/statisticgreen.svg') }}"></center>
                 <h1 class="text-center mt-6 sm:text-xs">{{ trans('dashboard.recovered') }}</h1>
-                <h1 class="font-bold text-center mt-6 text-recoverGreentxt text-3xl">{{ $totalRecovered }}</h1>
+                <h1 class="font-bold text-center mt-6 text-recoverGreentxt text-3xl">{{ $statistics['totalRecovered'] }}</h1>
             </div>
         </div>
         <div class="death w-96 h-60 bg-yellow-100 rounded-lg flex justify-center mt-6 sm:w-36 sm:h-52">
             <div class="flex flex-col">
                 <center><img class="mt-10 w-24 h-10 " src="{{ asset('images/statisticyellow.svg') }}"></center>
                 <h1 class="text-center mt-6 sm:text-xs">{{ trans('dashboard.deaths') }}</h1>
-                <h1 class="font-bold text-center mt-6 text-deathsYellow text-3xl">{{ $totalDeaths }}</h1>
+                <h1 class="font-bold text-center mt-6 text-deathsYellow text-3xl">{{ $statistics['totalDeaths'] }}</h1>
             </div>
         </div>
     </div>
     <div class="country hidden  w-full mt-10">
-        <form action="{{ route('dashboard.search') }}" method="GET" class="h-10 w-64 relative">
+        <form action="{{ route('dashboard') }}" method="GET" class="h-10 w-64 relative">
             <input class="search-input border-2 rounded-md h-full w-full pl-10 border-gray-200 outline-none" type="text" name="query" placeholder="Search..." onkeydown="if(event.key === 'Enter') this.form.submit()" value="{{ $query ?? '' }}">
             <img class="absolute top-1/2 transform -translate-y-1/2 ml-4" src="{{ asset('images/search.svg') }}">
         </form>
@@ -101,13 +101,13 @@
             <div class="flex justify-between items-center">
                 <h1 class="w-1/4 sm:w-16 sm:mt-4 sm:text-xxs">Worldwide</h1>
                 <div class="w-1/4 ml-6 sm:w-16 sm:mt-4 ">
-                <h2 class="sm:text-xxs">{{ $totalConfirmed }}</h2>
+                <h2 class="sm:text-xxs">{{ $statistics['totalConfirmed'] }}</h2>
                 </div>
                 <div class="w-1/4 ml-6 sm:w-16 sm:mt-4">
-                <h2 class="sm:text-xxs">{{ $totalDeaths }}</h2>
+                <h2 class="sm:text-xxs">{{ $statistics['totalDeaths'] }}</h2>
                 </div>
                 <div class="w-1/4 ml-6 sm:w-16 sm:mt-4">
-                <h2 class="sm:text-xxs">{{ $totalRecovered }}</h2>
+                <h2 class="sm:text-xxs">{{ $statistics['totalConfirmed'] }}</h2>
                 </div>
             </div>
             <hr class="mt-2">

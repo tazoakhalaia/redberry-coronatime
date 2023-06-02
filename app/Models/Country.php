@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Contracts\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,7 +10,7 @@ class Country extends Model
 {
     use HasFactory;
     protected $fillable = ['name'];
-    public function scopeSortByField($query, $field, $direction = 'asc') : Builder
+    public function scopeSortByField($query, $field, $direction = 'asc') : QueryBuilder
 {
     $sortableFields = ['name', 'recovered', 'deaths', 'confirmed'];
     if (!in_array($field, $sortableFields)) {
