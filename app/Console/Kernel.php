@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\CoronaVirusStatistics;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -12,7 +13,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('fetch:covid-statistics')->daily();
     }
 
     /**
@@ -21,6 +22,7 @@ class Kernel extends ConsoleKernel
     protected function commands(): void
     {
         $this->load(__DIR__.'/Commands');
+        CoronaVirusStatistics::class;
 
         require base_path('routes/console.php');
     }

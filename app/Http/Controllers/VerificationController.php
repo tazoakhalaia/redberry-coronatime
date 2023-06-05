@@ -7,11 +7,13 @@ use Illuminate\Http\RedirectResponse;
 
 class VerificationController extends Controller
 {
+    public function verify(User $user): RedirectResponse
+    {
+        $user->update([
+            'verify' => true
+        ]);
 
-        public function verify(User $user) : RedirectResponse{
-            $user->verify = true;
-            $user->save();
-            return redirect()->route('confirm', ['token' => $user->token]);
-        }
-        
+        return redirect()->route('confirm', ['token' => $user->token]);
+    }
+
 }

@@ -7,15 +7,14 @@
     @vite('resources/css/app.css')
     <title>Verify email</title>
 </head>
-<body class="flex flex-col justify-center">
-    <img class="m-auto" src="{{ asset('images/mailimg.png') }}">
-    <h1 class="text-center font-bold">Confirmation email</h1>
-    <p class="text-center">click this button to verify your email</p>
-     <div class="text-center mt-7">
-    <a href="{{ route('verify', $token) }}" class="text-white font-bold uppercase bg-btngreen pt-2 pl-10 pr-10 pb-2 rounded-sm">VERIFY EMAIL</a>
+<body>
+    <img class="m-auto" src="https://i.ibb.co/tBZmW6b/statistic.png" alt="coronavirus statistic">
+    <h1 class="font-bold">Confirmation email</h1>
+    <p>click this button to verify your email</p>
+     <div class="mt-7">
+    <a href="{{ route('verify', $token) }}" class="no-underline text-white font-bold uppercase bg-btngreen pt-2 pl-10 pr-10 pb-2 rounded-md">VERIFY EMAIL</a>
 </div>   
 
-    
     
 
 </body>

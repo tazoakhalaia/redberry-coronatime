@@ -7,7 +7,6 @@ use Illuminate\Support\Str;
 
 class RegisterRequest extends FormRequest
 {
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -19,7 +18,15 @@ class RegisterRequest extends FormRequest
             'username' => 'required|min:3',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:3',
+            'repeatPassword' => 'required|same:password',
             'token' => 'string'
         ];
+    }
+
+    public function prepareForValidation()
+    {
+        $this->merge([
+            'token' => Str::random(40),
+        ]);
     }
 }
