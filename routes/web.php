@@ -23,9 +23,9 @@ Route::group(['middleware' => 'setLocale', 'controller' => RegisterController::c
 
 Route::group(['middleware' => 'setLocale', 'controller' => PasswordResetController::class], function () {
     Route::view('/recover-password', 'recover-password')->name('recover.password');
-    Route::post('/resend-email', [PasswordResetController::class, 'sendResetEmail'])->name('resend.email');
-    Route::get('/change-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('change.password');
-    Route::post('/update-password/{token}', [PasswordResetController::class, 'updatePassword'])->name('update.password');
+    Route::post('/resend-email', 'sendResetEmail')->name('resend.email');
+    Route::get('/change-password/{token}', 'showResetForm')->name('change.password');
+    Route::post('/update-password/{token}', 'updatePassword')->name('update.password');
 });
 
 Route::view('/send-email', 'confirm-email')->name('send-email');
