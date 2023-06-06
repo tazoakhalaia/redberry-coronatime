@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EmailResetRequest;
 use App\Http\Requests\PasswordUpdateRequest;
+use App\Http\Requests\ResetEmailRequest;
+use App\Http\Requests\ResetPasswordEmailRequest;
 use App\Mail\ResetPasswordEmail;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class PasswordResetController extends Controller
 {
-    public function sendResetEmail(EmailResetRequest $request)
+    public function sendResetEmail(ResetPasswordEmailRequest $request)
     {
         $user = User::where('email', $request->email)->first();
         if ($user) {
