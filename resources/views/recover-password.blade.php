@@ -12,7 +12,8 @@
         <img class="mt-10 m-auto" src="{{ asset('images/coronatime.png') }}">
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <h1 class="text-center font-bold">Reset Password</h1>
-            <form action="">
+            <form action="{{ route('resend.email') }}" method="POST">
+                @csrf
             <x-input class="pl-2" name="email" type="email" placeholder="Enter your email" label="Email" />
             <x-button class="text-white mt-10 uppercase" buttonName="Reset Passowrd"/>
             </form>
