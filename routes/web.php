@@ -20,6 +20,7 @@ Route::group(['middleware' => 'setLocale', 'controller' => RegisterController::c
     Route::post('/register', 'register')->name('register');
 });
 
+Route::view('/recover-password', 'recover-password')->name('recover.password');
 
 Route::view('/send-email', 'confirm-email')->name('send-email');
 Route::view('/account-confirm/{token}', 'account_confirm_page.account-confirm')->name('confirm');
