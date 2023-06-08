@@ -79,6 +79,6 @@ class AuthTest extends TestCase
         'password' => $user[0]->password,
     ]);
 
-    $response->assertRedirect('/'); 
+    $response->assertRedirect(route('signup')); 
 }
 }

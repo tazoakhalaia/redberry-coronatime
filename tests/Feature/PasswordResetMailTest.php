@@ -27,7 +27,7 @@ class PasswordResetMailTest extends TestCase
         'token' => Str::random(40)
         ]);
 
-        $response->assertRedirect('/');
+        $response->assertRedirect(route('signup'));
         $this->assertTrue(Mail::to($response->email)->send(new ResetPasswordEmail($response->username,$response->token)));
     }
 }

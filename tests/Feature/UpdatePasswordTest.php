@@ -26,6 +26,6 @@ public function test_password_update__password_after_get_user_with_token()
         'repeatPassword' => Hash::make('password'),
     ]);
 
-    $response->assertRedirect('/');
+    $response->assertRedirect(route('signup'));
 }
 }

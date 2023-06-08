@@ -29,7 +29,7 @@ class RegisterTest extends TestCase
             'token' => $token
         ]);
 
-        $response->assertRedirect('/send-email');
+        $response->assertRedirect(route('send-email'));
     }
 
     public function test_register_if_email_send_when_user_press_sign_up_button()
@@ -43,7 +43,7 @@ class RegisterTest extends TestCase
         'token' => Str::random(40)
     ]);
 
-    $response->assertRedirect('/send-email');
+    $response->assertRedirect(route('send-email'));
 
     $this->assertTrue(Mail::to($response->email)->send(new UserRegisteredEmail($response->username,$response->token)));
 }
