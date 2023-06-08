@@ -11,7 +11,7 @@ class RegisterTest extends TestCase
 {
     public function test_register_page_is_accessible(): void
     {
-        $response = $this->get('/register');
+        $response = $this->get(route('registration'));
 
         $response->assertSuccessful();
     }
@@ -20,7 +20,7 @@ class RegisterTest extends TestCase
     {
         $this->withoutMiddleware();
         $token  = Str::random(40);
-        $response = $this->post('/register',[
+        $response = $this->post(route('register'),[
             '_token' => csrf_token(),
             'username' => 'tom',
             'email' => 'example@redberry.ge',
@@ -35,7 +35,7 @@ class RegisterTest extends TestCase
     public function test_register_if_email_send_when_user_press_sign_up_button()
 {
     $this->withoutMiddleware();
-    $response = $this->post('/register', [
+    $response = $this->post(route('register'), [
         'username' => 'john',
         'email' => 'example@redberry.ge',
         'password' => '$2y$10$jsgupMcOItKuah5gsixP4u9zwyOPhP05fRh/laowYh4euIRezH3Dy',
