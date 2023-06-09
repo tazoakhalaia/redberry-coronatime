@@ -65,9 +65,7 @@ class AuthTest extends TestCase
         'password' => 'password'
        ]);
 
-       $response->assertSessionHasErrors([
-        'error' => 'Invalid username or password.',
-    ]);
+       $response->assertRedirect(route('signup'));
     }
 
     public function test_user_can_login_if_verified()

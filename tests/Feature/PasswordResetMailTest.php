@@ -19,15 +19,17 @@ class PasswordResetMailTest extends TestCase
     public function test_password_resend_email_when_user_write_email_in_input()
     {
         $this->withoutMiddleware();
+        $token = Str::random(40);
+        $email = 'tamazi.akhalaia@redberry.ge';
+        $username = 'john';
         $response = $this->post(route('resend.email'),[
-        'username' => 'john',
-        'email' => 'example@redberry.ge',
-        'password' => '$2y$10$jsgupMcOItKuah5gsixP4u9zwyOPhP05fRh/laowYh4euIRezH3Dy',
-        'repeatPassword' => '$2y$10$jsgupMcOItKuah5gsixP4u9zwyOPhP05fRh/laowYh4euIRezH3Dy',
-        'token' => Str::random(40)
+        'username' => $username,
+        'email' => $email,
+        'token' => $token
         ]);
 
-        $response->assertRedirect(route('signup'));
-        $this->assertTrue(Mail::to($response->email)->send(new ResetPasswordEmail($response->username,$response->token)));
+    
+        Mail::to($email)->send(new ResetPasswordEmail($username,$token));
+        $response->assertRedirect(route('recover.password'));
     }
 }

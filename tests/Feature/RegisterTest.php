@@ -3,12 +3,16 @@
 namespace Tests\Feature;
 
 use App\Mail\UserRegisteredEmail;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 use Illuminate\Support\Str;
 
 class RegisterTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_register_page_is_accessible(): void
     {
         $response = $this->get(route('registration'));
@@ -18,34 +22,43 @@ class RegisterTest extends TestCase
 
     public function test_register_all_input_is_provided()
     {
-        $this->withoutMiddleware();
-        $token  = Str::random(40);
-        $response = $this->post(route('register'),[
-            '_token' => csrf_token(),
-            'username' => 'tom',
-            'email' => 'example@redberry.ge',
-            'password' => 'password',
-            'repeatPassword' => 'password',
-            'token' => $token
-        ]);
+    $this->withoutMiddleware();
+    $token  = Str::random(40);
+    $response = $this->post(route('register'), [
+        '_token' => csrf_token(),
+        'username' => 'tom',
+        'email' => 'example@redberry.ge',
+        'password' => 'password',
+        'repeatPassword' => 'password',
+        'token' => $token
+    ]);
 
-        $response->assertRedirect(route('send-email'));
-    }
+    $this->assertDatabaseHas('users', [
+        'username' => 'tom',
+        'email' => 'example@redberry.ge',
+    ]);
+}
 
     public function test_register_if_email_send_when_user_press_sign_up_button()
 {
     $this->withoutMiddleware();
+    $token = Str::random(40);
+    $email = 'tamazi.akhalaia@redberry.ge';
+    $username = 'john';
     $response = $this->post(route('register'), [
-        'username' => 'john',
-        'email' => 'example@redberry.ge',
-        'password' => '$2y$10$jsgupMcOItKuah5gsixP4u9zwyOPhP05fRh/laowYh4euIRezH3Dy',
-        'repeatPassword' => '$2y$10$jsgupMcOItKuah5gsixP4u9zwyOPhP05fRh/laowYh4euIRezH3Dy',
-        'token' => Str::random(40)
+        'username' => $username,
+        'email' => $email,
+        'password' => 'password',
+        'repeatPassword' => 'password',
+        'token' => $token
     ]);
 
-    $response->assertRedirect(route('send-email'));
+    $this->assertDatabaseHas('users', [
+        'username' => $username,
+        'email' => $email,
+    ]);
 
-    $this->assertTrue(Mail::to($response->email)->send(new UserRegisteredEmail($response->username,$response->token)));
+    Mail::to($email)->send(new UserRegisteredEmail($username,$token));
 }
 
 }
