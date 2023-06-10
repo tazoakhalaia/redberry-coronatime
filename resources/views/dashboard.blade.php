@@ -145,6 +145,7 @@
             worldWide.style.display = "flex";
             worldWideBtn.style.fontWeight = "500"
             countrybtn.style.fontWeight = "300"
+            localStorage.setItem("selectedDiv", "worldwide");
         });
 
         countrybtn.addEventListener('click', ()=> {
@@ -152,8 +153,23 @@
             country.style.display = "block";
             countrybtn.style.fontWeight = "500"
             worldWideBtn.style.fontWeight = "300"
+            localStorage.setItem("selectedDiv", "country");
         });
         
+        window.onload = function() {
+            var selectedDiv = localStorage.getItem("selectedDiv");
+            if (selectedDiv === "worldwide") {
+                country.style.display = "none";
+                worldWide.style.display = "flex";
+                worldWideBtn.style.fontWeight = "500";
+                countrybtn.style.fontWeight = "300";
+            } else if (selectedDiv === "country") {
+                worldWide.style.display = "none";
+                country.style.display = "block";
+                countrybtn.style.fontWeight = "500";
+                worldWideBtn.style.fontWeight = "300";
+            }
+        }
     </script>
 </body>
 </html>
