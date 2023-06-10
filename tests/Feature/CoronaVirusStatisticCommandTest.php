@@ -10,7 +10,7 @@ use Tests\TestCase;
 class CoronaVirusStatisticCommandTest extends TestCase
 {
     
-    public function test_corona_viures_statistic_command(): void
+    public function test_corona_virus_statistic_command()
     {
             Http::fake([
                 'https://devtest.ge/countries' => Http::response([
