@@ -20,7 +20,7 @@ class SessionController extends Controller
             return redirect()->route('dashboard');
         }
         return redirect()->route('signup')
-            ->with('error', 'Invalid username or password.');
+            ->with('error', 'Email address or username not found');
     }
 
     public function logout()
