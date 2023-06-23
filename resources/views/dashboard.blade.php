@@ -44,9 +44,15 @@
     </header>
     <main class="w-10/12 m-auto">
     <h1 class="font-bold text-md">{{ trans('dashboard.worldwide_statistic') }}</h1>
-    <div class="mt-10">
+    <div class="mt-10 flex">
+        <div>
     <button class="worldwidebtn sm:text-xs">{{ trans('dashboard.worldwide') }}</button>
-    <button class="countrybtn ml-10 sm:text-xs">{{ trans('dashboard.by_country') }}</button>
+    <div class="wline w-full h-0.5 bg-black"></div>
+    </div>
+    <div class="ml-10">
+    <button class="countrybtn  sm:text-xs">{{ trans('dashboard.by_country') }}</button>
+    <div class="cline w-full h-0.5 bg-black"></div>
+    </div>
     </div>
     <div class="worldwide  hidden w-full mt-10 flex flex-wrap justify-between mb-4">
         <div class="newcases w-96 h-60 bg-newCasesBlue rounded-lg flex justify-center mt-6">
@@ -150,6 +156,8 @@
     let country = document.querySelector('.country')
     let worldWide = document.querySelector('.worldwide')
     let userInfo = document.querySelector('.userinfo')
+    let wordwideLine = document.querySelector('.wline')
+    let countryLine = document.querySelector('.cline')
     let openInfo = false
     
     worldWideBtn.addEventListener('click', () => {
@@ -173,6 +181,8 @@
     function showWorldWideDiv() {
         country.style.display = "none";
         worldWide.style.display = "flex";
+        wordwideLine.style.display = 'flex'
+        countryLine.style.display = 'none'
         worldWideBtn.style.fontWeight = "500";
         countrybtn.style.fontWeight = "300";
         localStorage.setItem("selectedDiv", "worldwide");
@@ -182,6 +192,8 @@
         worldWide.style.display = "none";
         country.style.display = "block";
         countrybtn.style.fontWeight = "500";
+        wordwideLine.style.display = 'none'
+        countryLine.style.display = 'flex'
         worldWideBtn.style.fontWeight = "300";
         localStorage.setItem("selectedDiv", "country");
     }
