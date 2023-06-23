@@ -27,8 +27,17 @@
                     @csrf
                     <button class="bg-tranparent capitalize sm:hidden">{{ trans('dashboard.log_out') }}</button>
                 </form>
-                <div class="hidden sm:flex">
+                <div onclick="openUserInfo()" class="hidden relative sm:flex">
                     <img src="{{ asset('images/menu.svg') }}">
+                    <div class="userinfo hidden w-20 h-20 bg-gray-400 rounded-md absolute top-10 -left-10">
+                    <div class="ml-2 capitalize">
+                    <h1 class="font-bold sm:flex">{{ $user->username }}</h1>
+                </div>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button class="bg-tranparent capitalize ml-2 sm:flex">{{ trans('dashboard.log_out') }}</button>
+                </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,7 +48,7 @@
     <button class="worldwidebtn sm:text-xs">{{ trans('dashboard.worldwide') }}</button>
     <button class="countrybtn ml-10 sm:text-xs">{{ trans('dashboard.by_country') }}</button>
     </div>
-    <div class="worldwide   w-full mt-10 flex flex-wrap justify-between mb-4">
+    <div class="worldwide  hidden w-full mt-10 flex flex-wrap justify-between mb-4">
         <div class="newcases w-96 h-60 bg-newCasesBlue rounded-lg flex justify-center mt-6">
             <div class="flex flex-col">
                 <center><img class="mt-10 w-24 h-10" src="{{ asset('images/statisticline.svg') }}"></center>
@@ -136,40 +145,56 @@
 
     <!---->
     <script>
-        let worldWideBtn = document.querySelector('.worldwidebtn');
-        let countrybtn = document.querySelector('.countrybtn')
-        let country = document.querySelector('.country')
-        let worldWide = document.querySelector('.worldwide');
-        worldWideBtn.addEventListener('click', ()=> {
-            country.style.display = "none";
-            worldWide.style.display = "flex";
-            worldWideBtn.style.fontWeight = "500"
-            countrybtn.style.fontWeight = "300"
-            localStorage.setItem("selectedDiv", "worldwide");
-        });
-
-        countrybtn.addEventListener('click', ()=> {
-            worldWide.style.display = "none";
-            country.style.display = "block";
-            countrybtn.style.fontWeight = "500"
-            worldWideBtn.style.fontWeight = "300"
-            localStorage.setItem("selectedDiv", "country");
-        });
+    let worldWideBtn = document.querySelector('.worldwidebtn')
+    let countrybtn = document.querySelector('.countrybtn')
+    let country = document.querySelector('.country')
+    let worldWide = document.querySelector('.worldwide')
+    let userInfo = document.querySelector('.userinfo')
+    let openInfo = false
+    
+    worldWideBtn.addEventListener('click', () => {
+        showWorldWideDiv();
+    });
+    
+    countrybtn.addEventListener('click', () => {
+        showCountryDiv();
+    });
+    
+    window.onload = function() {
+        var selectedDiv = localStorage.getItem("selectedDiv");
         
-        window.onload = function() {
-            var selectedDiv = localStorage.getItem("selectedDiv");
-            if (selectedDiv === "worldwide") {
-                country.style.display = "none";
-                worldWide.style.display = "flex";
-                worldWideBtn.style.fontWeight = "500";
-                countrybtn.style.fontWeight = "300";
-            } else if (selectedDiv === "country") {
-                worldWide.style.display = "none";
-                country.style.display = "block";
-                countrybtn.style.fontWeight = "500";
-                worldWideBtn.style.fontWeight = "300";
-            }
+        if (selectedDiv === "country") {
+            showCountryDiv();
+        } else {
+            showWorldWideDiv();
         }
+    }
+    
+    function showWorldWideDiv() {
+        country.style.display = "none";
+        worldWide.style.display = "flex";
+        worldWideBtn.style.fontWeight = "500";
+        countrybtn.style.fontWeight = "300";
+        localStorage.setItem("selectedDiv", "worldwide");
+    }
+    
+    function showCountryDiv() {
+        worldWide.style.display = "none";
+        country.style.display = "block";
+        countrybtn.style.fontWeight = "500";
+        worldWideBtn.style.fontWeight = "300";
+        localStorage.setItem("selectedDiv", "country");
+    }
+
+    function openUserInfo(){
+        openInfo = !openInfo
+        if(openInfo === true){
+            userInfo.style.display = 'block'
+        }else {
+            userInfo.style.display = 'none'
+        }
+    }
+
     </script>
 </body>
 </html>
