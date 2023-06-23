@@ -7,6 +7,7 @@ return [
     'signup_free' => 'Sign up for free',
     'username' => 'Username',
     'password' => 'Password',
+    'remember_this_device' => 'Remember this device'
 ];
 ?>
 

@@ -33,8 +33,14 @@
             </div>
             @endif
             <x-input class="pl-3" placeholder="Fill in password" name="password" label="{{ trans('login.password') }}" type="password" />
-            <div class="mt-4 w-80 flex justify-end">
-                <a href="{{ route('recover.password') }}" class="text-blue-600 font-bold">{{ trans('login.forgot_password') }}</a>
+            <div class="w-80  flex justify-between items-center mt-4">
+                <div class="w-1/2 flex items-center">
+                <input type="checkbox">
+                <h1 class="text-xs font-bold ml-2">{{ trans('login.remember_this_device') }}</h1>
+                </div>
+            <div class="w-1/2 flex justify-end">
+                <a href="{{ route('recover.password') }}" class="text-blue-600 font-bold text-xs">{{ trans('login.forgot_password') }}</a>
+            </div>
             </div>
             <x-button class="text-white mt-6" buttonName="{{ trans('login.log_in') }}"/>
             
