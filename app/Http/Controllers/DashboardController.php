@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SortRequest;
 use App\Models\Country;
 use App\Services\CountryStatisticsService;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
@@ -15,16 +15,20 @@ class DashboardController extends Controller
         $sort = $request->sort;
         $direction = $request->direction ?? 'asc';
         $countries = Country::sortByField($sort, $direction)->get();
-        $results = Country::where('name', 'like', '%' . $request->query('query') . '%')->get();
-
+        $query = $request->query('query');
+        $results = Country::where(function ($queryBuilder) use ($query) {
+            if (App::getLocale() === 'en') {
+                $queryBuilder->where('name', 'like', '%' . $query . '%');
+            } elseif (App::getLocale() === 'ka') {
+                $queryBuilder->where('name->ka', 'like', '%' . $query . '%');
+            }
+        })->get();        
         $statistics = CountryStatisticsService::calculateStatistics();
-
         return view('dashboard', [
-        'countries' => $countries,
-        'user' => auth()->user(),
-        'statistics' => $statistics,
-        'results' => $results,
-]);
+            'countries' => $countries,
+            'user' => auth()->user(),
+            'statistics' => $statistics,
+            'results' => $results,
+        ]);
     }
-
 }
