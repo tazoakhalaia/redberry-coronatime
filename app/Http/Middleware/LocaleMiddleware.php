@@ -16,7 +16,7 @@ class LocaleMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = $request->input('lang', session('locale', App::getLocale()));
+         $locale = $request->input('lang', session('locale', App::getLocale()));
 
         if (!in_array($locale, ['en', 'ka'])) {
             $locale = 'en';
@@ -24,6 +24,16 @@ class LocaleMiddleware
 
         App::setLocale($locale);
         session(['locale' => $locale]);
+
+        $query = $request->query();
+        unset($query['lang']);
+
+        $newUrl = $request->url() . (empty($query) ? '' : '?' . http_build_query($query));
+
+        if ($request->fullUrl() !== $newUrl) {
+            return redirect()->to($newUrl);
+        }
+
         return $next($request);
     }
 }
