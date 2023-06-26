@@ -7,6 +7,7 @@ return [
     'signup_free' => 'დარეგისტრირდი უფასოდ',
     'username' => 'მომხმარებლის სახელი',
     'password' => 'პაროლი',
+    'remember_this_device' => 'მოწყობილობის დამახსოვრება'
 ];
 ?>
 
